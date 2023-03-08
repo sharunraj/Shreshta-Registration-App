@@ -22,7 +22,7 @@ const HeroSection = (props) => {
             </div>
             <div className='section-hero-image'>
                 <picture>
-                  <img src="./images/hero.svg" alt="heroimg" className='.hero-img'/>
+                  <img src="./images/logo.svg" width={400} alt="heroimg" className='.hero-img'/>
                 </picture>
 
             </div>
@@ -37,13 +37,20 @@ const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+  }
+  .container{
+    background-color:#334756;
+    border-radius: 5rem;
+    padding-left:5rem;
+    
   }
   .btn {
     max-width:16rem;
     
   }
   .User-btn{
-    background-color: #00b0ff;
+    background-color: #47a079;
     margin-top: 2rem;
     
   }

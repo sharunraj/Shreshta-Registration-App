@@ -10,7 +10,7 @@ import Footer from './components/footer';
 import {ThemeProvider} from "styled-components";
 import './App.css'
 import { GlobalStyle } from './GlobalStyle';
-
+import Typewriter from "typewriter-effect";
 const App = () => {
   const theme ={
     colors:{
@@ -38,6 +38,26 @@ const App = () => {
   <GlobalStyle />
   <BrowserRouter>
   <Header />
+        <div className="typ">
+          <Typewriter
+
+            onInit={(typewriter) => {
+
+              typewriter
+
+                .typeString("SHRESTHA 2023")
+
+                .pauseFor(1000)
+                .deleteAll()
+                .typeString("Welcomes You")
+                .pauseFor(1000)
+                .deleteAll()
+                .typeString("Scroll Down👇")
+                .start();
+                
+            }}
+          />
+        </div>
   <Routes>
     <Route path='/' element ={<Home />}/>
     <Route path='/about' element={<About />} />

@@ -4,11 +4,7 @@ import styled from 'styled-components';
 
 const Navbar = () => {
 const Nav = styled.nav`
-.Navbar-left{
 
- 
-
-}
 .Navbar-list{
     display: flex;
     gap: 4.8rem;

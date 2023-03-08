@@ -2,8 +2,31 @@ import React from 'react'
 import styled from 'styled-components'
 import { Button } from '../styles/Button'
 import { NavLink } from 'react-router-dom'
+import Typewriter from "typewriter-effect";
 const HeroSection = (props) => {
-  return (<Wrapper>
+  return (
+
+  <Wrapper>
+      <div className="typ">
+        <Typewriter
+
+          onInit={(typewriter) => {
+
+            typewriter
+
+              .typeString("SHRESTHA 2023")
+
+              .pauseFor(1000)
+              .deleteAll()
+              .typeString("Welcomes You")
+              .pauseFor(1000)
+              .deleteAll()
+              .typeString("Scroll Down👇")
+              .start();
+
+          }}
+        />
+      </div>
     <div className = "container grid grid-two-column">
             <div className='section-hero-data'>
             <h1 className='hero-heading'>
@@ -37,10 +60,10 @@ const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+ 
   }
   .container{
-    background-color:#334756;
+    background-color:#292929;
     border-radius: 5rem;
     padding-left:5rem;
     

@@ -21,7 +21,7 @@ const header = () => {
 const MainHeader = styled.header`
   padding: 0 4.8rem;
   height: 10rem;
-  background-color: #334756;
+  background-color: #292929;//334756
   display: flex;
   justify-content: space-between;
   align-items: center;

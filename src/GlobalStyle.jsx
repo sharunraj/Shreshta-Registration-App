@@ -14,10 +14,11 @@ html {
   overflow-x: hidden;
 }
 body {
-  overflow-x: hidden;
+  overflow: hidden;
    scrollbar-color: rgb(98 84 243);
     scrollbar-width: thin;
-    background-color:#082032;
+    background-color:#121212;
+    //#082032
 }
 body::-webkit-scrollbar {
   width: 1.5rem;

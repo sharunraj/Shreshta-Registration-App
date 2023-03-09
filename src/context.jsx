@@ -1,6 +1,7 @@
 import React, { useContext, useReducer } from "react";
 import reducer from "./reducer"
 const AppContext = React.createContext();
+
 const initialState={
     name:"",
     image:"",
@@ -32,6 +33,8 @@ const AppProvider = ({children}) => {
     return(
     <AppContext.Provider value={{...state,updateHomePage,updateAboutPage}}>{children}</AppContext.Provider>);
 };
+
+
 const useGlobalContext = () =>{
     return useContext(AppContext);
 }

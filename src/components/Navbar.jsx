@@ -42,7 +42,7 @@ return <Nav>
                 <NavLink className="navbar-link" to="/about">About</NavLink>
         </li>
         <li>
-                <NavLink className="navbar-link" to="/contact">Contact</NavLink>
+                <NavLink className="navbar-link" to="/Events">Events</NavLink>
         </li>
         <li>
                 <NavLink className="navbar-link" to="/register">Register</NavLink>

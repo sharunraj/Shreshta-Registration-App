@@ -49,7 +49,7 @@ const MainHeader = styled.header`
             text-decoration: none;
             &:hover,
             &:active{
-                color: rgb(0, 176, 255);
+                color: #47a079;
             }
         }
     }

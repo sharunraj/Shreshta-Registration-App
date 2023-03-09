@@ -4,6 +4,7 @@ import { Button } from '../styles/Button'
 import { NavLink } from 'react-router-dom'
 import Typewriter from "typewriter-effect";
 import { useGlobalContext } from '../context';
+
 const HeroSection = () => {
   const {name,image} = useGlobalContext();
   return (
@@ -52,7 +53,8 @@ const HeroSection = () => {
 
             </div>
     </div>
-
+  
+      
   </Wrapper>);
 };
 
@@ -106,6 +108,11 @@ const Wrapper = styled.section`
   }
   .hero-img {
     max-width: 80%;
+  }
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    .grid {
+      gap: 7.2rem;
+    }
   }
  `;
 export default HeroSection;

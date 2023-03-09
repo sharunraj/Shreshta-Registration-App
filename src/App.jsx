@@ -6,12 +6,13 @@ import Register from './assets/register';
 import User from './assets/user';
 import {BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from './components/header';
-import Footer from './components/footer';
+import Footer from './components/Footer';
 import {ThemeProvider} from "styled-components";
 import './App.css'
 import { GlobalStyle } from './GlobalStyle';
 import Events from './assets/Events';
-
+import Errorp from "./assets/Errorp";
+import GoToTop from './components/GoToTop';
 
 const App = () => {
   const theme ={
@@ -38,6 +39,7 @@ const App = () => {
   return (
   <ThemeProvider theme={theme}>
   <GlobalStyle />
+  <GoToTop/>
   <BrowserRouter>
   <Header />
   <Routes>
@@ -48,6 +50,7 @@ const App = () => {
     <Route path='/admin' element={<Admin />} />
     <Route path='/user' element={<User />} />
     <Route path='/Events' element={<Events/>}/>
+    <Route path='/Errorp' element={<Errorp />} />
   </Routes>
   <Footer />
   </BrowserRouter>

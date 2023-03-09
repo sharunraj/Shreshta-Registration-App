@@ -7,7 +7,7 @@ const Navbar = () => {
 const[openMenu, setOpenMenu] = useState(false);
 const Nav = styled.nav`
 
-.Navbar-list{
+.navbar-list{
     display: flex;
     gap: 4.8rem;
     li{
@@ -45,14 +45,14 @@ const Nav = styled.nav`
       .mobile-navbar-btn {
         display: inline-block;
         z-index: 999;
-        border: ${({ theme }) => theme.colors.black};
+        border: ${({ theme }) => theme.colors.white};
         .mobile-nav-icon {
           font-size: 4.2rem;
-          color: ${({ theme }) => theme.colors.black};
+          color: ${({ theme }) => theme.colors.white};
         }
       }
       
-      .Navbar-list {
+      .navbar-list {
         width: 100vw;
         height: 100vh;
         position: absolute;
@@ -92,7 +92,7 @@ const Nav = styled.nav`
       .active .close-outline {
         display: inline-block;
       }
-      .active .Navbar-list {
+      .active .navbar-list {
         visibility: visible;
         opacity: 1;
         transform: translateX(0);
@@ -103,22 +103,32 @@ const Nav = styled.nav`
 return (<Nav>
     <div className={openMenu ? "menuIcon active" : "menuIcon"}>
 
-        <ul className='Navbar-list'>
+        <ul className='navbar-list'>
         <li>
-                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/">Home</NavLink>
+                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/">
+                    Home
+                </NavLink>
         </li>
         <li>
-                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/Events">Events</NavLink>
+                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/Events">
+                    Events
+                </NavLink>
                 
         </li>
         <li>
-                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/about">About</NavLink>
+                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/about">
+                    About
+                </NavLink>
         </li>
         <li>
-                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/register">Register</NavLink>
+                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/register">
+                    Register
+                </NavLink>
         </li>
         <li>
-                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/user">Login</NavLink>
+                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/user">
+                    Login
+                </NavLink>
         </li>
         </ul>
         <div className='mobile-navbar-btn'>

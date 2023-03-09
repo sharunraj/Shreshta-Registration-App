@@ -1,11 +1,11 @@
-import React ,{useContext}from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Button } from '../styles/Button'
 import { NavLink } from 'react-router-dom'
 import Typewriter from "typewriter-effect";
-import { AppContext } from '../context';
-const HeroSection = (props) => {
-  const firstName = useContext(AppContext);
+import { useGlobalContext } from '../context';
+const HeroSection = () => {
+  const {name,image} = useGlobalContext();
   return (
 
   <Wrapper>
@@ -32,10 +32,10 @@ const HeroSection = (props) => {
     <div className = "container grid grid-two-column">
             <div className='section-hero-data'>
             <h1 className='hero-heading'>
-                {props.name}
+                {name}
             </h1>
             <p className='hero-para'>
-                This is a {firstName} app for the people who came to attend the Tech fest Shresta 2023
+                This is a {name} app for the people who came to attend the Tech fest Shresta 2023
                 held at Muthoot Institute Of Technology And Science.
             </p>
             <Button className="btn Admin-btn">
@@ -47,7 +47,7 @@ const HeroSection = (props) => {
             </div>
             <div className='section-hero-image'>
                 <picture>
-                  <img src="./images/logo.svg" width={400} alt="heroimg" className='.hero-img'/>
+                  <img src={image} width={400} alt="heroimg" className='.hero-img'/>
                 </picture>
 
             </div>

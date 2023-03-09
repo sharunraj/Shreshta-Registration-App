@@ -10,6 +10,8 @@ import Footer from './components/footer';
 import {ThemeProvider} from "styled-components";
 import './App.css'
 import { GlobalStyle } from './GlobalStyle';
+import Events from './assets/Events';
+
 
 const App = () => {
   const theme ={
@@ -45,6 +47,7 @@ const App = () => {
     <Route path='/contact' element={<Contact />} />
     <Route path='/admin' element={<Admin />} />
     <Route path='/user' element={<User />} />
+    <Route path='/Events' element={<Events/>}/>
   </Routes>
   <Footer />
   </BrowserRouter>

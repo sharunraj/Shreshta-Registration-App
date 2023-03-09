@@ -1,9 +1,11 @@
-import React from 'react'
+import React ,{useContext}from 'react'
 import styled from 'styled-components'
 import { Button } from '../styles/Button'
 import { NavLink } from 'react-router-dom'
 import Typewriter from "typewriter-effect";
+import { AppContext } from '../context';
 const HeroSection = (props) => {
+  const firstName = useContext(AppContext);
   return (
 
   <Wrapper>
@@ -33,7 +35,7 @@ const HeroSection = (props) => {
                 {props.name}
             </h1>
             <p className='hero-para'>
-                This is a Wallet/payment app for the people who came to attend the Tech fest Shresta 2023
+                This is a {firstName} app for the people who came to attend the Tech fest Shresta 2023
                 held at Muthoot Institute Of Technology And Science.
             </p>
             <Button className="btn Admin-btn">
@@ -70,13 +72,15 @@ const Wrapper = styled.section`
   }
   .btn {
     max-width:16rem;
-    
+     border-radius:4rem;
   }
   .User-btn{
     background-color: #47a079;
     margin-top: 2rem;
+   
     
   }
+  
   .hero-top-data {
     text-transform: uppercase;
     font-weight: 500;

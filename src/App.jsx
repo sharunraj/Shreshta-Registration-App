@@ -6,11 +6,14 @@ import Register from './assets/register';
 import User from './assets/user';
 import {BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from './components/header';
-import Footer from './components/footer';
+import Footer from './components/Footer';
 import {ThemeProvider} from "styled-components";
 import './App.css'
 import { GlobalStyle } from './GlobalStyle';
-import Typewriter from "typewriter-effect";
+import Events from './assets/Events';
+import Errorp from "./assets/Errorp";
+import GoToTop from './components/GoToTop';
+
 const App = () => {
   const theme ={
     colors:{
@@ -36,28 +39,9 @@ const App = () => {
   return (
   <ThemeProvider theme={theme}>
   <GlobalStyle />
+  <GoToTop/>
   <BrowserRouter>
   <Header />
-        <div className="typ">
-          <Typewriter
-
-            onInit={(typewriter) => {
-
-              typewriter
-
-                .typeString("SHRESTHA 2023")
-
-                .pauseFor(1000)
-                .deleteAll()
-                .typeString("Welcomes You")
-                .pauseFor(1000)
-                .deleteAll()
-                .typeString("Scroll Down👇")
-                .start();
-                
-            }}
-          />
-        </div>
   <Routes>
     <Route path='/' element ={<Home />}/>
     <Route path='/about' element={<About />} />
@@ -65,6 +49,8 @@ const App = () => {
     <Route path='/contact' element={<Contact />} />
     <Route path='/admin' element={<Admin />} />
     <Route path='/user' element={<User />} />
+    <Route path='/Events' element={<Events/>}/>
+    <Route path='/Errorp' element={<Errorp />} />
   </Routes>
   <Footer />
   </BrowserRouter>

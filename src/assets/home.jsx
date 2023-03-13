@@ -1,11 +1,18 @@
-import React from 'react'
+import { useEffect } from 'react';
 import HeroSection from '../components/HeroSection'
+import { useGlobalContext } from '../context'
 
 const home = () => {
-  const data = {
+  
+  /*const data = {
     name:"REGISTRATION APP",
+    image:"./images/logo.svg"
   }
-  return <HeroSection {...data} />;
+
+*/
+const {updateHomePage} = useGlobalContext();
+useEffect(() => updateHomePage(), []);
+  return <HeroSection  />;
 };
 
 export default home

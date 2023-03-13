@@ -2,15 +2,41 @@ import React from 'react'
 import styled from 'styled-components'
 import { Button } from '../styles/Button'
 import { NavLink } from 'react-router-dom'
-const HeroSection = (props) => {
-  return (<Wrapper>
+import Typewriter from "typewriter-effect";
+import { useGlobalContext } from '../context';
+
+const HeroSection = () => {
+  const {name,image} = useGlobalContext();
+  return (
+
+  <Wrapper>
+      <div className="typ">
+        <Typewriter
+
+          onInit={(typewriter) => {
+
+            typewriter
+
+              .typeString("SHRESTHA 2023")
+
+              .pauseFor(1000)
+              .deleteAll()
+              .typeString("Welcomes You")
+              .pauseFor(1000)
+              .deleteAll()
+              .typeString("Scroll Down👇")
+              .start();
+
+          }}
+        />
+      </div>
     <div className = "container grid grid-two-column">
             <div className='section-hero-data'>
             <h1 className='hero-heading'>
-                {props.name}
+                {name}
             </h1>
             <p className='hero-para'>
-                This is a Wallet/payment app for the people who came to attend the Tech fest Shresta 2023
+                This is a {name} app for the people who came to attend the Tech fest Shresta 2023
                 held at Muthoot Institute Of Technology And Science.
             </p>
             <Button className="btn Admin-btn">
@@ -22,12 +48,13 @@ const HeroSection = (props) => {
             </div>
             <div className='section-hero-image'>
                 <picture>
-                  <img src="./images/logo.svg" width={400} alt="heroimg" className='.hero-img'/>
+                  <img src={image} width={400} alt="heroimg" className='.hero-img'/>
                 </picture>
 
             </div>
     </div>
-
+  
+      
   </Wrapper>);
 };
 
@@ -37,23 +64,25 @@ const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+ 
   }
   .container{
-    background-color:#334756;
+    background-color:#292929;
     border-radius: 5rem;
     padding-left:5rem;
     
   }
   .btn {
     max-width:16rem;
-    
+     border-radius:4rem;
   }
   .User-btn{
     background-color: #47a079;
     margin-top: 2rem;
+   
     
   }
+  
   .hero-top-data {
     text-transform: uppercase;
     font-weight: 500;
@@ -79,6 +108,11 @@ const Wrapper = styled.section`
   }
   .hero-img {
     max-width: 80%;
+  }
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    .grid {
+      gap: 7.2rem;
+    }
   }
  `;
 export default HeroSection;

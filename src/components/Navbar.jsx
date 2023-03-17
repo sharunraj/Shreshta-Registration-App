@@ -32,7 +32,7 @@ const Nav = styled.nav`
     }
 
 }
-.mobile-navbar-btn {
+    .mobile-navbar-btn {
       display: none;
       .close-outline {
         display: none;
@@ -45,20 +45,20 @@ const Nav = styled.nav`
       .mobile-navbar-btn {
         display: inline-block;
         z-index: 999;
-        border: ${({ theme }) => theme.colors.white};
+        border: ${({ theme }) => theme.colors.black};
         .mobile-nav-icon {
           font-size: 4.2rem;
           color: ${({ theme }) => theme.colors.white};
         }
       }
-      
+      /* hide the original nav menu  */
       .navbar-list {
         width: 100vw;
         height: 100vh;
         position: absolute;
         top: 0;
         left: 0;
-        background-color: #fff;
+        background-color: #121212;
         display: flex;
         justify-content: center;
         align-content: center;
@@ -75,7 +75,7 @@ const Nav = styled.nav`
             }
             &:hover,
             &:active {
-              color: #fff;
+              color: ${({ theme }) => theme.colors.helper};
             }
           }
         }
@@ -86,7 +86,7 @@ const Nav = styled.nav`
         position: absolute;
         top: 3%;
         right: 10%;
-        color: #fff;
+        color: ${({ theme }) => theme.colors.white};
         z-index: 9999;
       }
       .active .close-outline {
@@ -99,6 +99,7 @@ const Nav = styled.nav`
         z-index: 999;
       }
     }
+
 `;
 return (<Nav>
     <div className={openMenu ? "menuIcon active" : "menuIcon"}>
@@ -115,11 +116,11 @@ return (<Nav>
                 </NavLink>
                 
         </li>
-        <li>
+      {/*  <li>
                 <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/about">
                     About
                 </NavLink>
-        </li>
+</li>*/}
         <li>
                 <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/register">
                     Register
@@ -131,7 +132,8 @@ return (<Nav>
                 </NavLink>
         </li>
         </ul>
-        <div className='mobile-navbar-btn'>
+        
+        <div className="mobile-navbar-btn">
             <CgMenu
                 name="menu-outline"
                 className="mobile-nav-icon"
@@ -142,7 +144,7 @@ return (<Nav>
                 className="close-outline mobile-nav-icon"
                 onClick={() => setOpenMenu(false)}
             />
-        </div>
+</div>
     </div>
   </Nav>
 );

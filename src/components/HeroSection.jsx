@@ -17,7 +17,7 @@ const HeroSection = () => {
 
             typewriter
 
-              .typeString("SHRESTHA 2023")
+              .typeString("SHRESHTA 2023")
 
               .pauseFor(1000)
               .deleteAll()

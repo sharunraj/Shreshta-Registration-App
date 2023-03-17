@@ -9,12 +9,12 @@ const header = () => {
       <NavLink to="/">
         <img src="./images/logo.svg" width={80} alt='logo' className="logo"/>
       </NavLink>
-      <ul className='Navbar-left'>
+   {/*   <ul className='Navbar-left'>
         <li>
-          <NavLink className="navbar-left" to="/">SHRESTHA 23'</NavLink>
+          <NavLink className="navbar-left" to="/">SHRESHTA 23'</NavLink>
         </li>
-      </ul>
-      <Navbar />
+  </ul>*/}
+  <Navbar />
     </MainHeader>
   );
 };

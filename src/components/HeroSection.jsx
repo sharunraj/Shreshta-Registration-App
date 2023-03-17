@@ -126,6 +126,9 @@ const Wrapper = styled.section`
     .hero-img {
     max-width:10%;
   }
+  .typ{
+    max-width:40rem;
+  }
   }
  `;
 export default HeroSection;

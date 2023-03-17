@@ -112,7 +112,23 @@ const Wrapper = styled.section`
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     .grid {
       gap: 7.2rem;
+      
     }
+    .hero-heading{
+      padding-top:3rem;
+      font-size:3rem;
+    }
+    .hero-para {
+    margin-top: 1.5rem;
+    margin-bottom: 3.4rem;
+    max-width: 30rem;
+  }
+    .hero-img {
+    max-width:10%;
+  }
+  .typ{
+    max-width:40rem;
+  }
   }
  `;
 export default HeroSection;

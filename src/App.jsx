@@ -13,6 +13,8 @@ import { GlobalStyle } from './GlobalStyle';
 import Events from './assets/Events';
 import Errorp from "./assets/Errorp";
 import GoToTop from './components/GoToTop';
+import UTransaction from './assets/UTransaction';
+import ATransaction from './assets/ATransaction';
 
 const App = () => {
   const theme ={
@@ -51,6 +53,8 @@ const App = () => {
     <Route path='/user' element={<User />} />
     <Route path='/Events' element={<Events/>}/>
     <Route path='/Errorp' element={<Errorp />} />
+    <Route path='/UTransaction' element={<UTransaction/>}/>
+    <Route path='/ATransaction' element={<ATransaction/>}/>
   </Routes>
   <Footer />
   </BrowserRouter>

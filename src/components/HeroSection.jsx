@@ -128,9 +128,7 @@ const Wrapper = styled.section`
     
 
   }
-  .typ{
-    max-width:20rem;
-  }
+
     .btn {
       align-items:center;
   }

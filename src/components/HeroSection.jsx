@@ -132,6 +132,7 @@ const Wrapper = styled.section`
     .btn {
       align-items:center;
   }
+  
   }
  `;
 export default HeroSection;

@@ -48,7 +48,7 @@ const HeroSection = () => {
             </div>
             <div className='section-hero-image'>
                 <picture>
-                  <img src={image} width={400} alt="heroimg" className='.hero-img'/>
+                  <img src={image} width={400} alt="heroimg" className='hero-img'/>
                 </picture>
 
             </div>
@@ -124,10 +124,15 @@ const Wrapper = styled.section`
     max-width: 30rem;
   }
     .hero-img {
-    max-width:10%;
+    width:30rem;
+    
+
   }
   .typ{
-    max-width:40rem;
+    max-width:20rem;
+  }
+    .btn {
+      align-items:center;
   }
   }
  `;

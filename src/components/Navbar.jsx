@@ -122,8 +122,8 @@ return (<Nav>
                 </NavLink>
 </li>*/}
         <li>
-                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/register">
-                    Register
+                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/admin">
+                    ADMIN
                 </NavLink>
         </li>
         <li>

@@ -15,7 +15,8 @@ import Errorp from "./assets/Errorp";
 import GoToTop from './components/GoToTop';
 import UTransaction from './assets/UTransaction';
 import ATransaction from './assets/ATransaction';
-
+import Addtoken from './assets/addtoken';
+import Table from './assets/Tables';
 const App = () => {
   const theme ={
     colors:{
@@ -55,6 +56,8 @@ const App = () => {
     <Route path='/Errorp' element={<Errorp />} />
     <Route path='/UTransaction' element={<UTransaction/>}/>
     <Route path='/ATransaction' element={<ATransaction/>}/>
+    <Route path='/addtoken' element={<Addtoken/>}/>
+    <Route path='/Tables' element={<Table />} />
   </Routes>
   <Footer />
   </BrowserRouter>

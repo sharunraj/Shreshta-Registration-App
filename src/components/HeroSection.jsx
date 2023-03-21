@@ -40,7 +40,7 @@ const HeroSection = () => {
                 held at Muthoot Institute Of Technology And Science.
             </p>
             <Button className="btn Admin-btn">
-                <NavLink to="/admincontrol">ADMIN</NavLink>
+                <NavLink to="/admin">ADMIN</NavLink>
             </Button>
             <Button className="btn User-btn">
                 <NavLink to="/user">USER</NavLink>

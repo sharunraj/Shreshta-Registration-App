@@ -17,7 +17,7 @@ const HeroSection = () => {
 
             typewriter
 
-              .typeString("SHRESTHA 2023")
+              .typeString("SHRESHTA 2023")
 
               .pauseFor(1000)
               .deleteAll()
@@ -36,7 +36,7 @@ const HeroSection = () => {
             {name}
           </h1>
           <p className='hero-para'>
-            This is a {name} app for the people who came to attend the Tech fest Shresta 2023
+            This is a {name} app for the people who came to attend the Tech fest Shreshta 2023
             held at Muthoot Institute Of Technology And Science.
           </p>
           {/* <Button className="btn Admin-btn">
@@ -48,7 +48,7 @@ const HeroSection = () => {
         </div>
         <div className='section-hero-image'>
           <picture>
-            <img src={image} width={400} alt="heroimg" className='.hero-img' />
+            <img src={image} width={400} alt="heroimg" className='hero-img' />
           </picture>
 
         </div>
@@ -112,7 +112,28 @@ const Wrapper = styled.section`
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     .grid {
       gap: 7.2rem;
+      
     }
+    .hero-heading{
+      padding-top:3rem;
+      font-size:3rem;
+    }
+    .hero-para {
+    margin-top: 1.5rem;
+    margin-bottom: 3.4rem;
+    max-width: 30rem;
+  }
+    .hero-img {
+
+    width:20rem;
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+    padding-bottom:10rem;
+  }
+    .btn {
+      align-items:center;
+  }
   }
  `;
 export default HeroSection;

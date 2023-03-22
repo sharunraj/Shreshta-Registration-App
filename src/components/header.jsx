@@ -9,6 +9,7 @@ const header = () => {
       <NavLink to="/">
         <img src="./images/logo.svg" width={80} alt='logo' className="logo"/>
       </NavLink>
+      
    {/*   <ul className='Navbar-left'>
         <li>
           <NavLink className="navbar-left" to="/">SHRESHTA 23'</NavLink>
@@ -25,6 +26,7 @@ const MainHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   .logo {
     height: auto;
     max-width: 60%;

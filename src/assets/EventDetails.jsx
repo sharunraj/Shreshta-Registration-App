@@ -185,8 +185,8 @@ function EventDetails() {
                 Header: ' ',
                 columns: [
                     {
-                        Header: 'USERNAME',
-                        accessor: 'username',
+                        Header: 'EVENTS',
+                        accessor: 'events',
                         filter: 'fuzzyText',
                     },
                     {
@@ -200,7 +200,7 @@ function EventDetails() {
         []
     );
     const data = [
-        { username: 'Hackathon', Users: '20' },
+        { events: 'Hackathon', Users: '20' },
 
     ];
     return <Table columns={columns} data={data} />;

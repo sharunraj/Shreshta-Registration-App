@@ -53,5 +53,19 @@ const Wrapper = styled.section`
     margin: 20px auto;
     padding: 1rem 20rem;
 }
+@media (max-width: ${({ theme }) => theme.media.mobile}){
+.reg-form {
+    
+    
+    max-width: 35rem;
+    margin: 2rem auto;
+    padding: 2rem;
+    /* height: 600px; */
+}
+.footer{
+    padding-top: 1.4rem;
+    padding-left:10rem;
+}
+}
 `;
 export default Eventreg

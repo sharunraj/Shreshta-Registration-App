@@ -227,6 +227,13 @@ const Wrapper = styled.section`
   .container {
     max-width: 120rem;
   }
+  .common-heading{
+    text-decoration-line:underline;
+      text-decoration-line:underline;
+  text-decoration-thickness:2px;
+  padding-bottom:2rem;
+  margin-top:-5rem;
+  }
   .card {
     border: 0.4rem solid rgb(170 170 170 / 40%);
     .card-data {

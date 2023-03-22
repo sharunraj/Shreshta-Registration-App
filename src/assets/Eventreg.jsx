@@ -13,16 +13,24 @@ const Eventreg = () => {
             <input className="form__input" type="text" id="NAME" placeholder="Event"  />
         </div>
         <div className="Description">
-          <label className="form__label" for="Desc">Desc. </label>
+          <label className="form__label" for="Desc">Desccription </label>
             <input className="form__input" type="text" id="Desc" placeholder="Desc"  />
-        </div>
-         <div className="Prize">
-            <label className="form__label" for="Desc">Prize </label>
-            <input className="form__input" type="text" id="Desc" placeholder="Prize" />
         </div>
         <div className="Poster">
             <label className="form__label" for="Poster">Poster </label>
             <input className="form__input" type="text" id="Desc" placeholder="Poster" />
+        </div>
+        <div className="Coordinator">
+            <label className="form__label" for="Coordinator">Coordinator </label>
+            <input className="form__input" type="text" id="Coord" placeholder="Coordinator" />
+        </div>
+        <div className="Contact">
+            <label className="form__label" for="Contact">Contact  </label>
+            <input className="form__input" type="text" id="Contact" placeholder="Contact" />
+        </div>
+        <div className="Description">
+        <label className='form__label' for="Description">Description</label>
+        <textarea name="message" cols="20" rows="6" autoComplete="off" placeholder='Description' required></textarea>
         </div>
       <div class="footer">
             <Button type="submit" class="btn" >Register</Button>
@@ -36,11 +44,14 @@ const Wrapper = styled.section`
 .reg-form-body{
   color:#fff;
   font-size:1.7rem;
+  
 }
 .reg-form{
-      margin:50px 0px; padding:0px;
-    text-align:center;
-    align:center;
+    
+   
+    width: 550px;
+    margin: 20px auto;
+    padding: 1rem 20rem;
 }
 `;
 export default Eventreg

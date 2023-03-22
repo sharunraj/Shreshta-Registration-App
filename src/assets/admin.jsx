@@ -14,10 +14,10 @@ const admin = () => {
     <p>SEE ALL TRANSACTIONS:</p>
     <Button><NavLink to="/ATransaction">TRANSACTION</NavLink></Button>
     <p>ADD TOKENS TO AN ACCOUNT:</p>
-    <Button><NavLink to="/addtoken">ADD</NavLink></Button>
-    <p>ADD EVENTS</p>
-    <Button><NavLink to="/Eventreg">EVENT ADD</NavLink></Button>
-    <p>EVENT DETAILS</p>
+    <Button><NavLink to="/addtoken">ADD TOKENS</NavLink></Button>
+    <p>ADD EVENTS:</p>
+    <Button><NavLink to="/Eventreg">ADD EVENT</NavLink></Button>
+    <p>EVENT DETAILS:</p>
     <Button><NavLink to="/EventDetails">DETAILS</NavLink></Button>
     </div>
     </Wrapper>
@@ -25,7 +25,11 @@ const admin = () => {
   );
 };
 const Wrapper = styled.section`
-
+.Admin{
+   
+  
+    
+}
 
 `;
 export default admin

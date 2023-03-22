@@ -41,9 +41,10 @@ const Wrapper = styled.section`
   font-size:1.5rem;
 }
 .reg-form{
-      margin:50px 0px; padding:0px;
-    text-align:center;
-    align:center;
+
+    width: 550px;
+    margin: 20px auto;
+    padding: 1rem 20rem;
 }
 
 `;

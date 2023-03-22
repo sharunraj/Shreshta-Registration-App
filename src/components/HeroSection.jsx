@@ -39,11 +39,11 @@ const HeroSection = () => {
                 This is a {name} app for the people who came to attend the Tech fest Shresta 2023
                 held at Muthoot Institute Of Technology And Science.
             </p>
-            <Button className="btn Admin-btn">
+            {/* <Button className="btn Admin-btn">
                 <NavLink to="/admincontrol">ADMIN</NavLink>
-            </Button>
+            </Button> */}
             <Button className="btn User-btn">
-                <NavLink to="/user">USER</NavLink>
+                {localStorage.getItem('user_token')? <NavLink to="/book">Book Now</NavLink> : <NavLink to="/user">Login</NavLink>}
             </Button>
             </div>
             <div className='section-hero-image'>

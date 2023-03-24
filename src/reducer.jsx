@@ -14,6 +14,12 @@ const reducer = (state, action)=>{
             image: action.payload.image,
         };
     }
+    if (action.type === "USER_DETAILS") {
+        return {
+            ...state,
+            userDetails: action.payload.userDetails,
+        };
+    }
     return state;
 };
 

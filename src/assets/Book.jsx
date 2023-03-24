@@ -4,16 +4,34 @@ import styled from 'styled-components';
 import { confirmAlert} from "react-confirm-alert"
 import { Button } from '../styles/Button';
 import "react-confirm-alert/src/react-confirm-alert.css";
+import callApi from '../utils/callApi';
+import { useNavigate } from 'react-router-dom';
 
 function Book() {
+  const nav = useNavigate()
   const submit = () => {
     confirmAlert({
       title: "Confirm to submit",
       message: "Do you want to continue?",
       buttons: [
         {
-          label: "Yes"
-          
+          label: "Yes",
+          onClick: ()=>{
+            callApi("event/book_event",{eventId:result._id}).then(res=>{
+              nav('/booked_events')
+            }).catch(err=>{
+              console.log();
+              confirmAlert({
+                title: "Error Occured",
+                message: err.response.data.message,
+                buttons: [
+                  {
+                    label: "Ok"
+                  }
+                ]
+              });
+            })
+          }
         },
         {
           label: "No"
@@ -28,7 +46,31 @@ function Book() {
 
     const handleScan = (result) => {
         if (result) {
-            setResult({ event_name: result.data.split(',')[0], event_price: result.data.split(',')[1] });
+          callApi('event/fetch_event',{id:result.data}).then(res=>{
+            if(res.data.event){
+              setResult(res.data.event)
+            }else{
+              confirmAlert({
+                title: "Invalid QR",
+                message: "Invalid QR Code. Please try again!",
+                buttons: [
+                  {
+                    label: "Ok"
+                  }
+                ]
+              });
+            }
+          }).catch(err=>{
+            confirmAlert({
+              title: "Invalid QR",
+              message: "Invalid QR Code. Please try again!",
+              buttons: [
+                {
+                  label: "Ok"
+                }
+              ]
+            });
+          })
         }
     };
 
@@ -40,21 +82,25 @@ function Book() {
         <Wrapper>
             <div>
                 <div className="container grid grid-two-column">
+                    {!result && 
                     <div className='section-hero-data'>
-                        <QrReader
-                            delay={500}
-                            className={'scanner-box'}
-                            onError={handleError}
-                            onScan={handleScan}
-                        />
+                      <QrReader
+                          delay={1000}
+                          className={'scanner-box'}
+                          onError={handleError}
+                          onScan={handleScan}
+                      />
 
-                    </div>
+                    </div>}
                     <div className='section-qr-result'>
                         {result ?
                             <>
                                 <div>
-                                    <p className='event-title'>{result.event_name}</p>
-                                    <p className='event-price'>Price: {result.event_price}</p>
+                                    <p className='event-title'>{result.name}</p>
+                                    <p className='event-price'>{result.description}</p>
+                                    <p className='event-price'>Location: {result.location}</p>
+                                    <p className='event-price'>Time: {result.time}</p>
+                                    <p className='event-price'>Price: {result.price}</p>
                                 </div>
                                 <Button className="btn User-btn" onClick={submit}>
                                     Book Now

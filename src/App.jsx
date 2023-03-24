@@ -20,6 +20,8 @@ import Eventreg from './assets/Eventreg';
 import Table from './assets/Tables';
 import EventDetails from './assets/EventDetails';
 import ProtectedRoute from './utils/ProvateRoute';
+import AdminRoute from './utils/AdminRoute';
+import Book from './assets/Book';
 const App = () => {
   const theme ={
     colors:{
@@ -54,7 +56,7 @@ const App = () => {
     <Route path='/about' element={<ProtectedRoute> <About /> </ProtectedRoute>} />
     <Route path='/register' element={<ProtectedRoute> <Register /> </ProtectedRoute>} />
     <Route path='/contact' element={<ProtectedRoute> <Contact /> </ProtectedRoute>} />
-    <Route path='/admin' element={<ProtectedRoute> <Admin /> </ProtectedRoute>} />
+    <Route path='/admin' element={<ProtectedRoute> <AdminRoute> <Admin /> </AdminRoute> </ProtectedRoute>} />
     <Route path='/Events' element={<ProtectedRoute> <Events/> </ProtectedRoute>}/>
     <Route path='/Errorp' element={<ProtectedRoute> <Errorp /> </ProtectedRoute>} />
     <Route path='/UTransaction' element={<ProtectedRoute> <UTransaction/> </ProtectedRoute>}/>
@@ -63,6 +65,7 @@ const App = () => {
     <Route path='/Tables' element={<ProtectedRoute> <Table /></ProtectedRoute>} />
     <Route path='/Eventreg' element={<ProtectedRoute> <Eventreg /> </ProtectedRoute>} />
     <Route path='/EventDetails' element={<ProtectedRoute> <EventDetails /> </ProtectedRoute>} />
+    <Route path='/book' element={<ProtectedRoute> <Book /> </ProtectedRoute>} />
   </Routes>
   <Footer />
   </BrowserRouter>

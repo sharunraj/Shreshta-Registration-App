@@ -131,6 +131,10 @@ const Wrapper = styled.section`
     display:block;
     padding-bottom:10rem;
   }
+
+  
+
+
     .btn {
       align-items:center;
   }

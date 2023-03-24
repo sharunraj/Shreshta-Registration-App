@@ -2,9 +2,11 @@ import React,{useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { CgMenu, CgCloseR } from "react-icons/cg";
+import { FaHandHolding } from 'react-icons/fa';
 
 const Navbar = () => {
 const[openMenu, setOpenMenu] = useState(false);
+const [isUserLoggedIn, setisUserLoggedIn] = useState(true)
 const Nav = styled.nav`
 
 .navbar-list{
@@ -101,6 +103,10 @@ const Nav = styled.nav`
     }
 
 `;
+const handleLogout = ()=>{
+  localStorage.removeItem('user_token')
+  setisUserLoggedIn(false)
+}
 return (<Nav>
     <div className={openMenu ? "menuIcon active" : "menuIcon"}>
 
@@ -127,9 +133,15 @@ return (<Nav>
                 </NavLink>
         </li>
         <li>
-                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/user">
+                {localStorage.getItem('user_token')? 
+                <NavLink className="navbar-link" onClick={() => handleLogout(false)} to='/login'>
+                    Logout
+                </NavLink>
+                :
+                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/login">
                     Login
                 </NavLink>
+                }
         </li>
         </ul>
         

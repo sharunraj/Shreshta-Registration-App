@@ -1,119 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../styles/Button";
-/*//import { useGlobalContext } from "./context";
-import { NavLink } from "react-router-dom";
-import { Button } from "./styles/Button";
+import { confirmAlert} from "react-confirm-alert"
+import "react-confirm-alert/src/react-confirm-alert.css";
+import callApi from "../utils/callApi";
 
-const Events  = () => {
-    const { services } = useGlobalContext();
-    console.log(services);
-
-    return (
-        <Wrapper className="section">
-            <h2 className="common-heading">Our Services</h2>
-            <div className="container grid grid-three-column">
-                {services.map((curElem) => {
-                    const { id, name, image, description } = curElem;
-                    return (
-                        <div key={id} className="card">
-                            <figure>
-                                <img src={image} alt={name} />
-                            </figure>
-                            <div className="card-data">
-                                <h3>{name}</h3>
-                                <p>{description}</p>
-                                <NavLink to="/service">
-                                    <Button className="btn">Read More</Button>
-                                </NavLink>
-                            </div>
-                        </div>
-                    );
-                })}
-            </div>
-        </Wrapper>
-    );
-};
-
-const Wrapper = styled.section`
-  padding: 9rem 0;
-  background-color: ${({ theme }) => theme.colors.bg};
-  .container {
-    max-width: 120rem;
-  }
-  .card {
-    border: 0.1rem solid rgb(170 170 170 / 40%);
-    .card-data {
-      padding: 0 2rem;
-    }
-    h3 {
-      margin: 2rem 0;
-      font-weight: 300;
-      font-size: 2.4rem;
-    }
-    .btn {
-      margin: 2rem auto;
-      background-color: rgb(0 0 0 / 0%);
-      border: 0.1rem solid rgb(98 84 243);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: rgb(98 84 243);
-      font-size: 1.4rem;
-      &:hover {
-        background-color: rgb(98 84 243);
-        color: #fff;
-      }
-    }
-  }
-  figure {
-    width: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.5s linear;
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      transition: all 0.2s linear;
-      cursor: pointer;
-    }
-    &:hover::after {
-      width: 100%;
-    }
-    &:hover img {
-      transform: scale(1.2);
-    }
-    img {
-      max-width: 90%;
-      margin-top: 1.5rem;
-      height: 20rem;
-      transition: all 0.2s linear;
-    }
-  }
-  @media (max-width: ${({ theme }) => theme.media.tab}) {
-    .grid-three-column {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  @media (max-width: ${({ theme }) => theme.media.mobile}) {
-    .grid-two-column,
-    .grid-three-column {
-      grid-template-columns: 1fr;
-    }
-  }
-`;
-
-export default Events;
-*///import location from "../assets/svg/location.svg";
 const events = [
     {
         name: "Auto Expo",
@@ -199,6 +91,26 @@ const events = [
 ];
 
 const Events = () => {
+
+  const [events, setEvents] = useState([])
+  useEffect(() => {
+    callApi('event/fetch_events').then(res => {
+      setEvents(res.data.events)
+    }).catch(err => {
+      confirmAlert({
+        title: "Error Occured",
+        message: "An error occured. Please try again.",
+        buttons: [
+          {
+            label: "Ok",
+            onClick: ()=>{window.location.reload()}
+          }
+        ]
+      });
+    })
+  }, [])
+  
+
     return (
         <Wrapper className="section">
         <h2 className="common-heading">EVENTS</h2>
@@ -218,10 +130,10 @@ const Events = () => {
                         <h2 >
                             {value.name}
                         </h2>
-                        <p>{value.desc}</p>
+                        <p>{value.description}</p>
 
                             <figure>
-                            <img className="w-4 h-4" src={value.img} alt="" />
+                            <img className="w-4 h-4" src={value.poster} alt="" />
                             </figure>
                         <NavLink to="/Events">
                             <Button className="btn">Book</Button>

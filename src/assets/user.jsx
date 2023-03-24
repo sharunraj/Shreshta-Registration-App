@@ -3,16 +3,19 @@ import React, { useState } from 'react'
 import { Button } from '../styles/Button'
 import callApi from '../utils/callApi'
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
 const user = () => {
 
   const [isOTPVerified, setIsOTPVerified] = useState(false)
   const [phone, setPhone] = useState('')
   const [OTP, setOTP] = useState('')
+  const nav = useNavigate()
 
   const handleSubmit = async () => {
     if (isOTPVerified) {
       callApi('auth/verify', { phone, otp: OTP }).then(res => {
         localStorage.setItem('user_token', JSON.stringify(res.data.token));
+        nav('/')
       }).catch(err => {
         alert(err)
       })

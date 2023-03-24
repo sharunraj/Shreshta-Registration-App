@@ -122,6 +122,8 @@ const events = [
         location: "Osama Ground",
         time: "09:00",
         img: "./logo.svg",
+        book:"no",
+        exptime:"",
     },
     {
         name: "Music Mania",
@@ -130,6 +132,8 @@ const events = [
         location: "Albert Einstein Hall",
         time: "11:00",
         img: "./logo.svg",
+      book: "no",
+      exptime: "",
     },
     {
         name: "Auto Expo",
@@ -138,6 +142,8 @@ const events = [
         location: "Osama Ground",
         time: "12:30",
         img: "./logo.svg",
+      book: "no",
+      exptime: "",
     },
     {
         name: "Music Mania",
@@ -146,6 +152,8 @@ const events = [
         location: "Albert Einstein Hall",
         time: "13:00",
         img: "./logo.svg",
+      book: "no",
+      exptime: "",
     },
     {
         name: "Auto Expo",
@@ -154,6 +162,8 @@ const events = [
         location: "Osama Ground",
         time: "15:00",
         img: "./logo.svg",
+      book: "no",
+      exptime: "",
     },
     {
         name: "Music Mania",
@@ -162,6 +172,8 @@ const events = [
         location: "Albert Einstein Hall",
         time: "17:30",
         img: "./logo.svg",
+      book: "no",
+      exptime: "",
     },
     {
         name: "Music Mania",
@@ -170,6 +182,8 @@ const events = [
         location: "Albert Einstein Hall",
         time: "19:30",
         img: "./logo.svg",
+      book: "no",
+      exptime: "",
         
     },
     {
@@ -179,6 +193,8 @@ const events = [
         location: "Albert Einstein Hall",
         time: "21:30",
         img: "./logo.svg",
+      book: "no",
+      exptime: "",
     },
 ];
 
@@ -210,6 +226,9 @@ const Events = () => {
                         <NavLink to="/Events">
                             <Button className="btn">Book</Button>
                         </NavLink>
+                        <h4>
+                    {value.exptime}
+                        </h4>
                             <h3 >
                                 {value.location}
                             </h3>
@@ -238,6 +257,12 @@ const Wrapper = styled.section`
     border: 0.4rem solid rgb(170 170 170 / 40%);
     .card-data {
       padding: 0 2rem;
+    }
+    h4{
+      margin: 1rem 10rem 0;
+      font-weight: 300;
+      font-size: 1.4rem;
+      color: #ffff;
     }
     h3 {
       margin: 2rem 0;

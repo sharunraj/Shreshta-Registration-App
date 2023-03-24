@@ -1,9 +1,27 @@
 import React, { useState } from 'react'
 import QrReader from 'react-web-qr-reader';
 import styled from 'styled-components';
+import { confirmAlert} from "react-confirm-alert"
 import { Button } from '../styles/Button';
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 function Book() {
+  const submit = () => {
+    confirmAlert({
+      title: "Confirm to submit",
+      message: "Do you want to continue?",
+      buttons: [
+        {
+          label: "Yes"
+          
+        },
+        {
+          label: "No"
+          // onClick: () => alert("Click No")
+        }
+      ]
+    });
+  };
 
 
     const [result, setResult] = useState(false);
@@ -38,7 +56,7 @@ function Book() {
                                     <p className='event-title'>{result.event_name}</p>
                                     <p className='event-price'>Price: {result.event_price}</p>
                                 </div>
-                                <Button className="btn User-btn">
+                                <Button className="btn User-btn" onClick={submit}>
                                     Book Now
                                 </Button>
                             </>

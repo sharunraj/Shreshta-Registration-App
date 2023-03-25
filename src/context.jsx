@@ -1,5 +1,6 @@
 import React, { useContext, useReducer } from "react";
 import reducer from "./reducer"
+import callApi from "./utils/callApi";
 const AppContext = React.createContext();
 
 const initialState={
@@ -30,8 +31,18 @@ const AppProvider = ({children}) => {
             },
         });
     };
+    const fetchUserDetails = () => {
+        return callApi('auth/fetch_user').then(res=>{
+            return dispatch({
+                type: "USER_DETAILS",
+                payload: {
+                    userDetails: res.data.user
+                },
+            });
+        })
+    };
     return(
-    <AppContext.Provider value={{...state,updateHomePage,updateAboutPage}}>{children}</AppContext.Provider>);
+    <AppContext.Provider value={{...state,updateHomePage,updateAboutPage, fetchUserDetails}}>{children}</AppContext.Provider>);
 };
 
 

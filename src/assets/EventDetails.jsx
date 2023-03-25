@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTable, useFilters, useGlobalFilter, useSortBy, usePagination } from 'react-table';
 import { matchSorter } from 'match-sorter';
 import styled from 'styled-components';
+import callApi from '../utils/callApi';
 // Define a default UI for filtering
 function DefaultColumnFilter({ column: { filterValue, preFilteredRows, setFilter } }) {
     const count = preFilteredRows.length;
@@ -179,19 +180,34 @@ function Table({ columns, data }) {
     );
 }
 function EventDetails() {
+
+    const [registrations, setRegistrations] = useState([])
+    useEffect(() => {
+      
+        callApi('event/fetch_event_registrations').then(res=>{
+            if(res.type === 'success'){
+                res.data.registrations.map(reg=>{
+                    reg.event = reg.event.name
+                    reg.registrations = reg.userId.length
+                })
+                setRegistrations(res.data.registrations)
+            }
+        })
+    }, [])
+    
     const columns = React.useMemo(
         () => [
             {
                 Header: ' ',
                 columns: [
                     {
-                        Header: 'EVENTS',
-                        accessor: 'events',
+                        Header: 'EVENT',
+                        accessor: 'event',
                         filter: 'fuzzyText',
                     },
                     {
-                        Header: 'Users',
-                        accessor: 'Users',
+                        Header: 'Registrations',
+                        accessor: 'registrations',
                         filter: 'fuzzyText',
                     },
                 ],
@@ -203,7 +219,7 @@ function EventDetails() {
         { events: 'Hackathon', Users: '20' },
 
     ];
-    return <Table columns={columns} data={data} />;
+    return <Table columns={columns} data={registrations} />;
 }
 const Wrapper = styled.section`
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap');

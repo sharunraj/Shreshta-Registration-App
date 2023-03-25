@@ -2,9 +2,94 @@ import React,{useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { CgMenu, CgCloseR } from "react-icons/cg";
+import { FaHandHolding } from 'react-icons/fa';
+import { useGlobalContext } from '../context';
 
 const Navbar = () => {
 const[openMenu, setOpenMenu] = useState(false);
+const [isUserLoggedIn, setisUserLoggedIn] = useState(true)
+const {userDetails} = useGlobalContext()
+
+const handleLogout = ()=>{
+  localStorage.removeItem('user_token')
+  setisUserLoggedIn(false)
+}
+
+return (<Nav>
+    <div className={openMenu ? "menuIcon active" : "menuIcon"}>
+
+        <ul className='navbar-list'>
+        <li>
+                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/">
+                    Home
+                </NavLink>
+        </li>
+        <li>
+                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/Events">
+                    Events
+                </NavLink>
+                
+        </li>
+      {/*  <li>
+                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/about">
+                    About
+                </NavLink>
+</li>*/}
+            {userDetails?.role === 'ADMIN'?
+                <>
+                 <li>
+                  <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/admin">
+                    ADMIN
+                  </NavLink>
+                </li>
+                <li>
+                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/ATransaction">
+                  Transactions
+                </NavLink>
+                </li>
+                
+                </>
+                :  
+                <>
+                <li>
+                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/UTransaction">
+                  Transactions
+                </NavLink>
+                </li>
+                </>
+                }
+       
+        <li>
+                {localStorage.getItem('user_token')? 
+                <NavLink className="navbar-link" onClick={() => handleLogout(false)} to='/login'>
+                    Logout
+                </NavLink>
+                :
+                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/login">
+                    Login
+                </NavLink>
+                }
+        </li>
+        </ul>
+        
+        <div className="mobile-navbar-btn">
+            <CgMenu
+                name="menu-outline"
+                className="mobile-nav-icon"
+                onClick={() => setOpenMenu(true)}
+            />
+            <CgCloseR
+                name="close-outline"
+                className="close-outline mobile-nav-icon"
+                onClick={() => setOpenMenu(false)}
+            />
+</div>
+    </div>
+  </Nav>
+);
+
+};
+
 const Nav = styled.nav`
 
 .navbar-list{
@@ -101,54 +186,5 @@ const Nav = styled.nav`
     }
 
 `;
-return (<Nav>
-    <div className={openMenu ? "menuIcon active" : "menuIcon"}>
-
-        <ul className='navbar-list'>
-        <li>
-                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/">
-                    Home
-                </NavLink>
-        </li>
-        <li>
-                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/Events">
-                    Events
-                </NavLink>
-                
-        </li>
-      {/*  <li>
-                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/about">
-                    About
-                </NavLink>
-</li>*/}
-        <li>
-                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/admin">
-                    ADMIN
-                </NavLink>
-        </li>
-        <li>
-                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/user">
-                    Login
-                </NavLink>
-        </li>
-        </ul>
-        
-        <div className="mobile-navbar-btn">
-            <CgMenu
-                name="menu-outline"
-                className="mobile-nav-icon"
-                onClick={() => setOpenMenu(true)}
-            />
-            <CgCloseR
-                name="close-outline"
-                className="close-outline mobile-nav-icon"
-                onClick={() => setOpenMenu(false)}
-            />
-</div>
-    </div>
-  </Nav>
-);
-
-};
 
 export default Navbar;

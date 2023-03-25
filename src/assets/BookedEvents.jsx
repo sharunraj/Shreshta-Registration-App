@@ -59,6 +59,7 @@ const BookedEvents = () => {
                 ))}
             </div>
         </Wrapper>
+    );
 }
 const Wrapper = styled.section`
   padding: 9rem 0;

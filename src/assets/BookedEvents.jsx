@@ -44,9 +44,6 @@ const BookedEvents = () => {
                             <figure>
                                 <img className="w-4 h-4" src={value.poster} alt="" />
                             </figure>
-                            <NavLink to="/Events">
-                                <Button className="btn" onClick={() => { submit(value._id) }}>BOOKED</Button>
-                            </NavLink>
                             <h4>
                                 {value.exptime}
                             </h4>

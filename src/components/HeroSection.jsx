@@ -11,7 +11,7 @@ const HeroSection = () => {
 
     <Wrapper>
       <div className="typ">
-        <Typewriter
+        <Typewriter 
 
           onInit={(typewriter) => {
 
@@ -22,9 +22,9 @@ const HeroSection = () => {
               .pauseFor(1000)
               .deleteAll()
               .typeString("Welcomes You")
-              .pauseFor(1000)
+              .pauseFor(600)
               .deleteAll()
-              .typeString("Scroll Down👇")
+              .typeString("Scroll Down...")
               .start();
 
           }}

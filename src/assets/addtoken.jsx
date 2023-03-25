@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from '../styles/Button'
 import callApi from '../utils/callApi'
 import styled from 'styled-components'
+import ErrorDialogue from '../utils/ErrorDialogue'
 
 const addtoken = () => {
+
+  const [phone, setPhone] = useState('')
+  const [point, setPoint] = useState('')
+
+  const submit = ()=>{
+    if(!phone || !point || phone.length<10){
+      return ErrorDialogue("Enter Valid phone number and points")
+    }
+    callApi('wallet/add_point',{phone,point}).then(res=>{
+      if(res.type === 'success'){
+        ErrorDialogue('Points added succesfully!')
+        setPhone('')
+        setPoint('')
+      }
+    }).catch(err=>{
+      ErrorDialogue(err.response.data.message)
+    })
+  }
   return (
     <Wrapper>
       <div className="reg-form">
@@ -11,16 +30,16 @@ const addtoken = () => {
 
           <div className="phonenumber">
             <label className="form__label" for="phonenumber">Phone </label>
-            <input className="form__input" type="phonenumber" id="phonenumber" placeholder="phonenumber"  />
+            <input className="form__input" type="phonenumber" id="phonenumber" placeholder="phonenumber" value={phone} onChange={e=>{setPhone(e.target.value)}}  />
           </div>
         
             <div className="TOKENS">
-              <label className="form__label" for="TOKENS">Tokens</label>
-              <input className="form__input" type="number" id="TOKENS" placeholder="TOKEN"  />
+              <label className="form__label" for="TOKENS">Points</label>
+              <input className="form__input" type="number" id="TOKENS" placeholder="Points"  value={point} onChange={e=>{setPoint(e.target.value)}}/>
             </div>
          
           <div class="footer">
-            <Button type="submit" >ADD</Button>
+            <Button type="submit" onClick={submit}>ADD</Button>
           </div>
         </div>
       </div>

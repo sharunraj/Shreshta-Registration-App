@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import callApi from '../utils/callApi';
 import ErrorDialogue from '../utils/ErrorDialogue';
@@ -7,6 +8,7 @@ import Tables from './Tables'
 const UTransaction = () => {
 
     const [transactions, setTransactions] = useState([])
+    const nav = useNavigate()
     useEffect(() => {
       
         callApi('wallet/fetch_transactions').then(res=>{
@@ -21,6 +23,7 @@ const UTransaction = () => {
             }
         }).catch(err=>{
             ErrorDialogue()
+            nav('/')
         })
 
     }, [])

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../styles/Button";
 import { confirmAlert} from "react-confirm-alert"
 import "react-confirm-alert/src/react-confirm-alert.css";
 import callApi from "../utils/callApi";
+import ErrorDialogue from "../utils/ErrorDialogue";
 
 const events = [
     {
@@ -93,22 +94,38 @@ const events = [
 const Events = () => {
 
   const [events, setEvents] = useState([])
+  const nav = useNavigate()
   useEffect(() => {
     callApi('event/fetch_events').then(res => {
       setEvents(res.data.events)
     }).catch(err => {
-      confirmAlert({
-        title: "Error Occured",
-        message: "An error occured. Please try again.",
-        buttons: [
-          {
-            label: "Ok",
-            onClick: ()=>{window.location.reload()}
-          }
-        ]
-      });
+      ErrorDialogue()
     })
   }, [])
+
+  const submit = (id) => {
+    confirmAlert({
+      title: "Confirm to submit",
+      message: "Do you want to continue?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: ()=>{
+            callApi("event/book_event",{eventId:id}).then(res=>{
+              nav('/booked_events')
+            }).catch(err=>{
+              console.log(err.response.data.message);
+              ErrorDialogue(err.response.data.message)
+            })
+          }
+        },
+        {
+          label: "No"
+          // onClick: () => alert("Click No")
+        }
+      ]
+    });
+  };
   
 
     return (
@@ -136,7 +153,7 @@ const Events = () => {
                             <img className="w-4 h-4" src={value.poster} alt="" />
                             </figure>
                         <NavLink to="/Events">
-                            <Button className="btn">Book</Button>
+                            <Button className="btn" onClick={()=>{submit(value._id)}}>Book</Button>
                         </NavLink>
                         <h4>
                     {value.exptime}

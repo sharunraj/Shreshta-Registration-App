@@ -20,7 +20,6 @@ function Book() {
             callApi("event/book_event",{eventId:result._id}).then(res=>{
               nav('/booked_events')
             }).catch(err=>{
-              console.log();
               confirmAlert({
                 title: "Error Occured",
                 message: err.response.data.message,

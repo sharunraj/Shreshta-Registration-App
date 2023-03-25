@@ -178,20 +178,25 @@ function Table({ columns, data }) {
         </>
     );
 }
-function Tables() {
+function Tables({data}) {
     const columns = React.useMemo(
         () => [
             {
                 Header: ' ',
                 columns: [
                     {
-                        Header: 'USERNAME',
-                        accessor: 'username',
+                        Header: 'Time',
+                        accessor: 'timestamp',
                         filter: 'fuzzyText',
                     },
                     {
-                        Header: 'TOKENS',
-                        accessor: 'tokens',
+                        Header: 'Amount',
+                        accessor: 'amount',
+                        filter: 'fuzzyText',
+                    },
+                    {
+                        Header: 'Type',
+                        accessor: 'tType',
                         filter: 'fuzzyText',
                     },
                 ],
@@ -199,10 +204,7 @@ function Tables() {
         ],
         []
     );
-    const data = [
-        { username: 'SHARUN', tokens: '1000' },
 
-    ];
     return <Table columns={columns} data={data} />;
 }
 const Wrapper = styled.section`

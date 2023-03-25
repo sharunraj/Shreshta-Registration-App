@@ -6,6 +6,7 @@ function ProtectedRoute({ children }) {
   const {fetchUserDetails, userDetails} = useGlobalContext()
   useEffect(() => {
     if(!userDetails){
+      console.log('private route',userDetails);
       fetchUserDetails()
     }
   }, [])

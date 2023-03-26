@@ -50,7 +50,7 @@ const HeroSection = () => {
                 <NavLink to="/admincontrol">ADMIN</NavLink>
             </Button> */}
           <Button className="btn User-btn">
-            {localStorage.getItem('user_token') ? <NavLink to="/book">Book Now</NavLink> : <NavLink to="/user">Login</NavLink>}
+            {localStorage.getItem('user_token') ? <NavLink to="/Book">Book Now</NavLink> : <NavLink to="/user">Login</NavLink>}
           </Button>
         </div>
         <div className='section-hero-image'>

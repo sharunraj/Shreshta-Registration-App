@@ -23,6 +23,7 @@ import ProtectedRoute from './utils/ProvateRoute';
 import AdminRoute from './utils/AdminRoute';
 import Book from './assets/Book';
 import BookedEvents from './assets/BookedEvents';
+import UserCreated from './assets/UserCreated';
 const App = () => {
   const theme ={
     colors:{
@@ -68,6 +69,7 @@ const App = () => {
     <Route path='/EventDetails' element={<ProtectedRoute> <EventDetails /> </ProtectedRoute>} />
     <Route path='/book' element={<ProtectedRoute> <Book /> </ProtectedRoute>} />
     <Route path='/booked_events' element={<ProtectedRoute> <BookedEvents /> </ProtectedRoute>} />
+    <Route path='/UserCreated' element={<ProtectedRoute> <UserCreated /> </ProtectedRoute>} />
   </Routes>
   <Footer />
   </BrowserRouter>

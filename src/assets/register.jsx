@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import callApi from '../utils/callApi'
 import styled from 'styled-components';
 import { Button } from '../styles/Button';
+import { NavLink } from 'react-router-dom';
 const register = () => {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
@@ -26,7 +27,9 @@ const register = () => {
             <input className="form__input" type="phonenumber" id="phonenumber" placeholder="phonenumber" value={phone} onChange={e => { setPhone(e.target.value) }} />
         </div>
       <div class="footer">
+        <NavLink to='/UserCreated'>
             <Button type="submit" class="btn" onClick={createUser}>Register</Button>
+        </NavLink>
       </div>
       </div>
     </div>  

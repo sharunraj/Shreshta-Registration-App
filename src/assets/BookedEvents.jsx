@@ -20,6 +20,15 @@ const events = [
 ];
 const BookedEvents = () => {
     const [events, setEvents] = useState([])
+
+    useEffect(() => {
+      callApi('event/registered_events').then(res=>{
+        if(res.type === 'success'){
+          setEvents(res.data.events)
+        }
+      })
+    }, [])
+    
     return (
         <Wrapper className="section">
             <h2 className="common-heading">EVENTS</h2>
@@ -37,18 +46,18 @@ const BookedEvents = () => {
                         </div>
                         <div className="card-data">
                             <h2 >
-                                {value.name}
+                                {value.eventId.name}
                             </h2>
-                            <p>{value.description}</p>
+                            <p>{value.eventId.description}</p>
 
                             <figure>
-                                <img className="w-4 h-4" src={value.poster} alt="" />
+                                <img className="w-4 h-4" src={value.eventId.poster} alt="" />
                             </figure>
                             <h4>
-                                {value.exptime}
+                                {new Date(new Date(value.createdAt).setMinutes(new Date(value.createdAt).getMinutes()+30)).toLocaleString()}
                             </h4>
                             <h3 >
-                                {value.location}
+                                {value.eventId.location}
                             </h3>
 
                         </div>

@@ -14,7 +14,9 @@ const user = () => {
   const handleSubmit = async () => {
     if (isOTPVerified) {
       callApi('auth/verify', { phone, otp: OTP }).then(res => {
-        localStorage.setItem('user_token', JSON.stringify(res.data.token));
+        var today = new Date();
+        today.setHours(today.getHours() + 10);
+        localStorage.setItem('user_token', JSON.stringify({value:res.data.token,expiry:today}));
         nav('/')
       }).catch(err => {
         alert(err)

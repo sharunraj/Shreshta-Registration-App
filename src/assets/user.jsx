@@ -72,7 +72,7 @@ const Wrapper = styled.section`
     border: 3px solid grey;
    // background-color:#292929;
     border-radius:2rem;
-    padding: 1rem
+    padding: 1 3rem
 }
 .form__label{
   margin-right:5rem;
@@ -81,7 +81,7 @@ const Wrapper = styled.section`
 .regform {
     
     
-    width: 200px;
+    width: 25rem;
     margin: 2rem auto;   
     border: 3px solid grey;
    // background-color:#292929;

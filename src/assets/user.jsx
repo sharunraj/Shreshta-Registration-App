@@ -86,7 +86,7 @@ const Wrapper = styled.section`
     border: 3px solid grey;
    // background-color:#292929;
     border-radius:2rem;
-    padding: 1rem
+    padding: 1 4rem
 
 }
 .login-form-body{

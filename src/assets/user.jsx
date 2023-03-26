@@ -81,10 +81,13 @@ const Wrapper = styled.section`
 .regform {
     
     
-    max-width: 35rem;
-    margin: 2rem auto;
-    padding: 2rem;
-    /* height: 600px; */
+    width: 200px;
+    margin: 2rem auto;   
+    border: 3px solid grey;
+   // background-color:#292929;
+    border-radius:2rem;
+    padding: 1rem
+
 }
 .footer{
     padding-top: 1.4rem;

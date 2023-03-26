@@ -30,41 +30,53 @@ const user = () => {
 
   return (
     <Wrapper>
-    <div className="reg-form">
-      <div className="login-form-body">
-
-        <div className="phonenumber">
-          <label className="form__label" for="phonenumber">Phone </label>
-          <input className="form__input" type="phonenumber" id="phonenumber" placeholder="phonenumber" value={phone} onChange={e => { setPhone(e.target.value) }} />
-        </div>
-        {isOTPVerified &&
-          <div className="password">
-            <label className="form__label" for="password">OTP</label>
-            <input className="form__input" type="password" id="password" placeholder="Password" value={OTP} onChange={e => { setOTP(e.target.value) }} />
+      <div className="regform">
+        <div className="login-form-body">
+        <h3 className='head'>Log In</h3>
+          <div className="phonenumber">
+            <label className="form__label" for="phonenumber">Phone </label>
+            <input className="form__input" type="phonenumber" id="phonenumber" placeholder="phonenumber" value={phone} onChange={e => { setPhone(e.target.value) }} />
           </div>
-        }
-        <div class="footer">
-          <Button type="submit" onClick={handleSubmit} class="btn">{isOTPVerified ? 'Login' : 'Verify'}</Button>
+          {isOTPVerified &&
+            <div className="password">
+              <label className="form__label" for="password">OTP</label>
+              <input className="form__input" type="password" id="password" placeholder="Password" value={OTP} onChange={e => { setOTP(e.target.value) }} />
+            </div>
+          }
+          <div class="footer">
+            <Button type="submit" onClick={handleSubmit} class="btn">{isOTPVerified ? 'Login' : 'Verify'}</Button>
+          </div>
         </div>
       </div>
-    </div>
     </Wrapper>
 
   )
 }
 const Wrapper = styled.section`
+.head{
+  text-align:center;
+  font-size:2rem;
+  padding-bottom:1rem;
+}
 .login-form-body{
   font-size: 1.7rem;
   color:#fff;
+  text-align:left;
+  margin:auto;
 }
-.reg-form{
-
-    width: 550px;
-    margin: 20px auto;
-    padding: 1rem 20rem;
+.regform{
+    width: 200px;
+    margin: 2rem auto;   
+    border: 3px solid grey;
+   // background-color:#292929;
+    border-radius:2rem;
+    padding: 1rem
+}
+.form__label{
+  margin-right:5rem;
 }
 @media (max-width: ${({ theme }) => theme.media.mobile}){
-.reg-form {
+.regform {
     
     
     max-width: 35rem;

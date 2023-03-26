@@ -17,14 +17,20 @@ const HeroSection = () => {
 
             typewriter
 
-              .typeString("SHRESHTA 2023")
+              .typeString("SHRESHTA")
 
               .pauseFor(1000)
               .deleteAll()
-              .typeString("Welcomes You")
+              .typeString("20203")
+              .pauseFor(100)
+              .deleteAll()
+              .typeString("Welcomes")
               .pauseFor(600)
               .deleteAll()
-              .typeString("Scroll Down...")
+              .typeString("You All")
+              .pauseFor(50)
+              .deleteAll()
+              .typeString("Scroll Down..")
               .start();
 
           }}
@@ -36,8 +42,9 @@ const HeroSection = () => {
             {name}
           </h1>
           <p className='hero-para'>
-            This is a {name} app for the people who came to attend the Tech fest Shreshta 2023
-            held at Muthoot Institute Of Technology And Science.
+            This is a {name} app for those who will attend SHRESHTA '23 held at Muthoot Institute Of Technology And Science.
+            Through this app the users can deposit their tokens and book events with these respective tokens. It also acts as a database of information
+            for all the events ongoing at the moment.
           </p>
           {/* <Button className="btn Admin-btn">
                 <NavLink to="/admincontrol">ADMIN</NavLink>

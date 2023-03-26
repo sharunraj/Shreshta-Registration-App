@@ -89,6 +89,12 @@ const Wrapper = styled.section`
     padding: 1rem
 
 }
+.login-form-body{
+  font-size: 1.7rem;
+  color:#fff;
+  text-align:left;
+  margin:auto;
+}
 .footer{
     padding-top: 1.4rem;
     padding-left:10rem;

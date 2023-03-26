@@ -31,9 +31,6 @@ const Footer = () => {
           <div className="footer-about">
 
             <h3>SHRESHTA 2023</h3>
-
-
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
           </div>
 
           {/* 2nd column */}

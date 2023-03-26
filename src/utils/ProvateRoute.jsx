@@ -12,10 +12,10 @@ function ProtectedRoute({ children }) {
   }, [])
   
   const isLoggedIn = ()=>{
-    if(localStorage.getItem('user_token')){
-      return true
-    }else{
+    if(localStorage.getItem('user_token') && (new Date() > new Date(JSON.parse(localStorage.getItem('user_token')).expiry))){
       return false
+    }else{
+      return true
     }
   }
   if (!isLoggedIn()) {

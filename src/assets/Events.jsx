@@ -134,11 +134,6 @@ const Events = () => {
         <div className="container grid grid-three-column">
             {events.map((value, i) => (
                 <div className="card">
-                    <div className="flex items-start w-spx">
-                        <h2 key={i} >
-                            {value.time}
-                        </h2>
-                    </div>
                     <div className="flex flex-col h-28 justify-center items-center">
                         <div className={`w-3 h-3 bg-${value.status} rounded-xl`}></div>
                         <div className={`w-1 h-28 bg-${value.status}`}></div>
@@ -161,6 +156,11 @@ const Events = () => {
                             <h3 >
                                 {value.location}
                             </h3>
+                    <div className="flex items-start w-spx">
+                        <h3 key={i} >
+                            {value.time}
+                        </h3>
+                    </div>
                         
                     </div>
                 </div>
@@ -173,12 +173,9 @@ const Wrapper = styled.section`
   padding: 9rem 0;
   background-color: #121212;
   .container {
-    max-width: 120rem;
+    max-width: 100rem;
   }
   .common-heading{
-    text-decoration-line:underline;
-      text-decoration-line:underline;
-  text-decoration-thickness:2px;
   padding-bottom:2rem;
   margin-top:-5rem;
   }

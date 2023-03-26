@@ -6,7 +6,7 @@ const UserCreated = () => {
   return (
     <Wrapper>
     <div className='head'>
-        <h2>User Created Successfully...</h2>
+        <h2 className='h'>User Created Successfully...</h2>
         <NavLink to='/'>
             <Button>Go Back</Button>
         </NavLink>
@@ -21,6 +21,11 @@ const Wrapper = styled.section`
     border: 3px solid grey;
     border-radius:2rem;
     padding: 1 3rem
+    
+}
+.h{
+    font-size:2rem;
+    text-align:center
 }
 `;
 export default UserCreated

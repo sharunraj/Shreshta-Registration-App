@@ -39,6 +39,13 @@ const AppProvider = ({children}) => {
                     userDetails: res.data.user
                 },
             });
+        }).catch(err=>{
+            return dispatch({
+                type: "USER_DETAILS",
+                payload: {
+                    userDetails: null
+                },
+            });
         })
     };
     return(

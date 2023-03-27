@@ -3,13 +3,16 @@ import React, {useState} from 'react'
 import callApi from '../utils/callApi'
 import styled from 'styled-components';
 import { Button } from '../styles/Button';
+import ErrorDialogue from '../utils/ErrorDialogue';
 const register = () => {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
 
   const createUser = async () => {
     const user_id = await callApi('auth/register', { name, phone })
-    console.log(user_id);
+    ErrorDialogue('User registered Succesfullu !')
+    setName('')
+    setPhone('')
   }
 
   return (

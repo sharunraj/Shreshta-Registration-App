@@ -24,12 +24,16 @@ return (<Nav>
                     Home
                 </NavLink>
         </li>
-        <li>
+        
+
+                {localStorage.getItem('user_token')? 
+                <>
+                <li>
                 <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/Events">
                     Events
                 </NavLink>
                 
-        </li>
+                </li>
       {/*  <li>
                 <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/about">
                     About
@@ -63,18 +67,23 @@ return (<Nav>
                 </li>
                 </>
                 }
-       
-        <li>
-                {localStorage.getItem('user_token')? 
+                <li>
                 <NavLink className="navbar-link" onClick={() => handleLogout(false)} to='/login'>
                     Logout
                 </NavLink>
+                </li>
+    
+                </>
                 :
+                <>
+                <li>
                 <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/login">
                     Login
                 </NavLink>
+                </li>
+      
+                </>
                 }
-        </li>
         </ul>
         
         <div className="mobile-navbar-btn">

@@ -5,17 +5,24 @@ function ProtectedRoute({ children }) {
 
   const {fetchUserDetails, userDetails} = useGlobalContext()
   useEffect(() => {
-    if(!userDetails){
-      console.log('private route',userDetails);
-      fetchUserDetails()
+    if(localStorage.getItem('user_token') && (new Date() < new Date(JSON.parse(localStorage.getItem('user_token')).expiry))){
+      if(!userDetails){
+        console.log('private route',userDetails);
+        fetchUserDetails()
+      }
     }
+    
   }, [])
   
   const isLoggedIn = ()=>{
-    if(localStorage.getItem('user_token') && (new Date() > new Date(JSON.parse(localStorage.getItem('user_token')).expiry))){
-      return false
+    if(localStorage.getItem('user_token')){
+      if(new Date() > new Date(JSON.parse(localStorage.getItem('user_token')).expiry)){
+        return false
+      }else{
+        return true
+      }
     }else{
-      return true
+      return false
     }
   }
   if (!isLoggedIn()) {

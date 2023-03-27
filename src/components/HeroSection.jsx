@@ -21,7 +21,7 @@ const HeroSection = () => {
 
               .pauseFor(1000)
               .deleteAll()
-              .typeString("20203")
+              .typeString("2023")
               .pauseFor(100)
               .deleteAll()
               .typeString("Welcomes")

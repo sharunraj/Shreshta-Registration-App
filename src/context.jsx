@@ -15,7 +15,7 @@ const AppProvider = ({children}) => {
             {
                 type: "HOME_UPDATE",
                 payload: {
-                    name: "Registeration App",
+                    name: "Registration App",
                     image: "./images/logo.svg",
 
                 },

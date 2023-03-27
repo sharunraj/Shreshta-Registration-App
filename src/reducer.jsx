@@ -18,6 +18,7 @@ const reducer = (state, action)=>{
         return {
             ...state,
             userDetails: action.payload.userDetails,
+            walletDetails: action.payload.walletDetails
         };
     }
     return state;

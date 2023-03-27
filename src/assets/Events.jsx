@@ -153,12 +153,12 @@ const Events = () => {
                         <h4>
                     {value.exptime}
                         </h4>
-                            <h3 >
+                            <h3 className="loc_field">
                                 {value.location}
                             </h3>
-                    <div className="flex items-start w-spx">
+                    <div className="flex items-start w-spx time_field">
                         <h3 key={i} >
-                            {value.time}
+                            {new Date(value.time).toLocaleString()}
                         </h3>
                     </div>
                         
@@ -242,6 +242,12 @@ const Wrapper = styled.section`
       height: 20rem;
       transition: all 0.2s linear;
     }
+  }
+  .time_field{
+    text-align: center;
+  }
+  .loc_field{
+    text-align: center;
   }
   @media (max-width: ${({ theme }) => theme.media.tab}) {
     .grid-three-column {

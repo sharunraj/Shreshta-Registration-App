@@ -6,9 +6,8 @@ import Typewriter from "typewriter-effect";
 import { useGlobalContext } from '../context';
 
 const HeroSection = () => {
-  const { name, image } = useGlobalContext();
+  const { name, image, walletDetails } = useGlobalContext();
   return (
-
     <Wrapper>
       <div className="typ">
         <Typewriter 
@@ -52,6 +51,9 @@ const HeroSection = () => {
           <Button className="btn User-btn">
             {localStorage.getItem('user_token') ? <NavLink to="/Book">Book Now</NavLink> : <NavLink to="/login">Login</NavLink>}
           </Button>
+          <div className="balance">
+            <p>Balance : <strong>{walletDetails?.balance}</strong></p>
+          </div>
         </div>
         <div className='section-hero-image'>
           <picture>
@@ -115,6 +117,20 @@ const Wrapper = styled.section`
   }
   .hero-img {
     max-width: 80%;
+  }
+  .balance{
+    background: linear-gradient(90deg, rgba(71,160,121,1) 0%, rgba(2,97,96,1) 100%);
+    border-radius: 24px;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    max-width: 16em;
+  }
+  .balance p{
+    margin: 0;
+    background: #292929;
+    border-radius: 24px;
+    opacity: 1;
   }
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     .grid {

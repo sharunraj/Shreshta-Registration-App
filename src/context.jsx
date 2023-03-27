@@ -36,14 +36,16 @@ const AppProvider = ({children}) => {
             return dispatch({
                 type: "USER_DETAILS",
                 payload: {
-                    userDetails: res.data.user
+                    userDetails: res.data.user,
+                    walletDetails: res.data.wallet,
                 },
             });
         }).catch(err=>{
             return dispatch({
                 type: "USER_DETAILS",
                 payload: {
-                    userDetails: null
+                    userDetails: null,
+                    walletDetails: null
                 },
             });
         })

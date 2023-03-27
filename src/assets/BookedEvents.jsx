@@ -54,6 +54,7 @@ const BookedEvents = () => {
                                 <img className="w-4 h-4" src={value.eventId.poster} alt="" />
                             </figure>
                             <h4>
+                              Exp Time:
                                 {new Date(new Date(value.createdAt).setMinutes(new Date(value.createdAt).getMinutes()+30)).toLocaleString()}
                             </h4>
                             <h3 >

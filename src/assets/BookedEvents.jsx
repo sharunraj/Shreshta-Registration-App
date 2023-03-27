@@ -31,7 +31,7 @@ const BookedEvents = () => {
     
     return (
         <Wrapper className="section">
-            <h2 className="common-heading">EVENTS</h2>
+            <h2 className="common-heading">Booked Events</h2>
             <div className="container grid grid-three-column">
                 {events.map((value, i) => (
                     <div className="card">
@@ -74,9 +74,6 @@ const Wrapper = styled.section`
     max-width: 120rem;
   }
   .common-heading{
-    text-decoration-line:underline;
-      text-decoration-line:underline;
-  text-decoration-thickness:2px;
   padding-bottom:2rem;
   margin-top:-5rem;
   }
@@ -100,7 +97,7 @@ const Wrapper = styled.section`
     .btn {
       margin: 2rem auto;
       background-color: rgb(0 0 0 / 0%);
-      border: 0.3rem solid #05aeaa;
+      border: 0.3rem solid #fff;
       display: flex;
       justify-content: center;
       align-items: center;

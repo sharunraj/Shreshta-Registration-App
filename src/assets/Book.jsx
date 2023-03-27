@@ -6,8 +6,10 @@ import { Button } from '../styles/Button';
 import "react-confirm-alert/src/react-confirm-alert.css";
 import callApi from '../utils/callApi';
 import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../context';
 
 function Book() {
+  const { name, image, walletDetails } = useGlobalContext();
   const nav = useNavigate()
   const submit = () => {
     confirmAlert({
@@ -80,7 +82,7 @@ function Book() {
     return (
         <Wrapper>
             <div>
-                <div className="container grid grid-two-column">
+                <div className="contaner grid grid-two-column">
                     {!result && 
                     <div className='section-hero-data'>
                       <QrReader
@@ -106,11 +108,15 @@ function Book() {
                                 </Button>
                             </>
                             :
-                            <p className='event-title'>Scan a QR Code !</p>
+                            <p className='event-title'>Scan QR!</p>
                         }
                     </div>
+            <div className="balance">
+              <p>Balance : <strong>{walletDetails?.balance}</strong></p>
+            </div>
                 </div>
             </div>
+            
         </Wrapper>
     )
 }
@@ -123,10 +129,25 @@ const Wrapper = styled.section`
     justify-content: center;
  
   }
-  .container{
-    background-color:#292929;
+    .balance{
+    background: linear-gradient(90deg, rgba(71,160,121,1) 0%, rgba(2,97,96,1) 100%);
+    border-radius: 24px;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    /*margin-bottom: 55px;*/
+    max-width: 16em;
+  }
+  .balance p{
+    margin: 0;
+    background: #292929;
+    border-radius: 24px;
+    opacity: 1;
+  }
+  .contaner{
+    
     border-radius: 5rem;
-    padding-left:5rem;
+    padding-left:2rem;
     
   }
   
@@ -156,6 +177,7 @@ const Wrapper = styled.section`
     opacity: 1;
     font-size: 20px;
     margin: 0;
+    margin-bottom:20px;
   }
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     .grid {

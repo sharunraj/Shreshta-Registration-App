@@ -4,66 +4,13 @@ import { Button } from '../styles/Button'
 import { NavLink } from 'react-router-dom'
 import Typewriter from "typewriter-effect";
 import { useGlobalContext } from '../context';
+import Book from '../assets/Book';
 
 const HeroSection = () => {
   const { name, image, walletDetails } = useGlobalContext();
   return (
     <Wrapper>
-      <div className="typ">
-        <Typewriter 
-
-          onInit={(typewriter) => {
-
-            typewriter
-
-              .typeString("SHRESHTA")
-
-              .pauseFor(1000)
-              .deleteAll()
-              .typeString("2023")
-              .pauseFor(100)
-              .deleteAll()
-              .typeString("Welcomes")
-              .pauseFor(600)
-              .deleteAll()
-              .typeString("You All")
-              .pauseFor(50)
-              .deleteAll()
-              .typeString("Scroll Down..")
-              .start();
-
-          }}
-        />
-      </div>
-      <div className="container grid grid-two-column">
-        <div className='section-hero-data'>
-          <h1 className='hero-heading'>
-            {name}
-          </h1>
-          <p className='hero-para'>
-            This is a {name} app for those who will attend SHRESHTA '23 held at Muthoot Institute Of Technology And Science.
-            Through this app the users can deposit their tokens and book events with these respective tokens. It also acts as a database of information
-            for all the events ongoing at the moment.
-          </p>
-          {/* <Button className="btn Admin-btn">
-                <NavLink to="/admincontrol">ADMIN</NavLink>
-            </Button> */}
-          <Button className="btn User-btn">
-            {localStorage.getItem('user_token') ? <NavLink to="/Book">Book Now</NavLink> : <NavLink to="/login">Login</NavLink>}
-          </Button>
-          <div className="balance">
-            <p>Balance : <strong>{walletDetails?.balance}</strong></p>
-          </div>
-        </div>
-        <div className='section-hero-image'>
-          <picture>
-            <img src={image} width={400} alt="heroimg" className='hero-img' />
-          </picture>
-
-        </div>
-      </div>
-
-
+      <Book />
     </Wrapper>);
 };
 

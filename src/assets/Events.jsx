@@ -147,9 +147,9 @@ const Events = () => {
                             <figure>
                             <img className="w-4 h-4" src={value.poster} alt="" />
                             </figure>
-                        <NavLink to="/Events">
+                       {/* <NavLink to="/Events">
                             <Button className="btn" onClick={()=>{submit(value._id)}}>Book</Button>
-                        </NavLink>
+            </NavLink>*/}
                         <h4>
                     {value.exptime}
                         </h4>

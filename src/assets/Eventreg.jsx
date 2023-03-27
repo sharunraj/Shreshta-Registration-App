@@ -3,9 +3,22 @@ import styled from 'styled-components'
 import { Button } from '../styles/Button'
 import callApi from '../utils/callApi'
 import ErrorDialogue from '../utils/ErrorDialogue'
+import Select from 'react-select'
 
 const Eventreg = () => {
+  const [selectedOptions, setSelectedOptions] = useState();
+  const optionList = [
+    { value: "red", label: "Red" },
+    { value: "green", label: "Green" },
+    { value: "yellow", label: "Yellow" },
+    { value: "blue", label: "Blue" },
+    { value: "white", label: "White" }
+  ];
 
+  // Function triggered on selection
+  function handleSelect(data) {
+    setSelectedOptions(data);
+  }
   const initialState = {
     name:'',
     description:'',
@@ -59,7 +72,17 @@ const Eventreg = () => {
         </div>
         <div className="Coordinator">
             <label className="form__label" for="Coordinator">Coordinator </label>
-            <input className="form__input" type="text" id="Coord" placeholder="Coordinator" value={eventData.cordinatorName} onChange={e=>{setEventData({...eventData,cordinatorName:e.target.value})}} />
+            <div className='dropdown-container'> 
+              <Select
+                options={optionList}
+                placeholder="Select color"
+                value={selectedOptions}
+                onChange={handleSelect}
+                isSearchable={true}
+                isMulti
+              />
+            </div>
+          {/*  <input className="form__input" type="text" id="Coord" placeholder="Coordinator" value={eventData.cordinatorName} onChange={e=>{setEventData({...eventData,cordinatorName:e.target.value})}} />*/}
         </div>
         <div className="Contact">
             <label className="form__label" for="Contact">Contact  </label>
@@ -89,6 +112,10 @@ const Wrapper = styled.section`
     width: 550px;
     margin: 20px auto;
     padding: 1rem 20rem;
+}
+.dropdown-container{
+  width: 200px;
+  color:#121212;
 }
 @media (max-width: ${({ theme }) => theme.media.mobile}){
 .reg-form {

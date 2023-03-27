@@ -8,7 +8,8 @@ import { NavLink } from 'react-router-dom';
 const register = () => {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
-
+  const [email, setEmail] = useState('')
+  const [college, setCollege] = useState('')
   const createUser = async () => {
     const user_id = await callApi('auth/register', { name, phone })
     ErrorDialogue('User registered Succesfullu !')
@@ -29,6 +30,14 @@ const register = () => {
           <label className="form__label" for="phonenumber">PHONE </label>
             <input className="form__input" type="phonenumber" id="phonenumber" placeholder="phonenumber" value={phone} onChange={e => { setPhone(e.target.value) }} />
         </div>
+          <div className="email">
+            <label className="form__label" for="EMAIL">EMAIL </label>
+            <input className="form__input" type="email" id="EMAIL" placeholder="@gmail.com" value={email} onChange={e => { setEmail(e.target.value) }} />
+          </div>
+          <div className="college">
+            <label className="form__label" for="college">COLLEGE </label>
+            <input className="form__input" type="text" id="college" placeholder="college" value={college} onChange={e => { setCollege(e.target.value) }} />
+          </div>
       <div class="footer">
         <NavLink to='/UserCreated'>
             <Button type="submit" class="btn" onClick={createUser}>Register</Button>

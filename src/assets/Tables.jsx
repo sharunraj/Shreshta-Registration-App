@@ -284,6 +284,12 @@ cursor: pointer;
 select {
 height: 2rem;
 width: 10rem;
-}`;
+}
+@media (max-width: ${({ theme }) => theme.media.mobile}){
+    .container{
+        margin-left:-1rem;
+    }
+}
+`;
 
 export default Tables;

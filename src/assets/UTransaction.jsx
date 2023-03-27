@@ -30,7 +30,7 @@ const UTransaction = () => {
     
     return (
         <Wrapper>
-        <div>UTransaction</div>
+        <div >UTransaction</div>
         <Tables data={transactions}/>
         </Wrapper>
     )

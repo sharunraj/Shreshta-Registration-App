@@ -64,8 +64,7 @@ const admin = () => {
 };
 const Wrapper = styled.section`
 .heading{
-  text-decoration-line:underline;
-  text-decoration-thickness:2px;
+  
       display: flex;
         justify-content: center;
         align-items: center;

@@ -54,7 +54,7 @@ const Eventreg = () => {
           <label className="form__label" for="Event">Event </label>
             <input className="form__input" type="text" id="NAME" placeholder="Event" value={eventData.name} onChange={e=>{setEventData({...eventData,name:e.target.value})}} />
         </div>
-        <div className="Description">
+        <div className="Location">
           <label className="form__label" for="Desc">Location </label>
             <input className="form__input" type="text" id="Desc" placeholder="Location" value={eventData.location} onChange={e=>{setEventData({...eventData,location:e.target.value})}}  />
         </div>
@@ -81,6 +81,10 @@ const Eventreg = () => {
                 isSearchable={true}
                 isMulti
               />
+            </div>
+            <div className="phonenumber">
+              <label className="form__label" for="phonenumber">Phone </label>
+              <input className="form__input" type="phonenumber" id="phonenumber" placeholder="phonenumber" />
             </div>
           {/*  <input className="form__input" type="text" id="Coord" placeholder="Coordinator" value={eventData.cordinatorName} onChange={e=>{setEventData({...eventData,cordinatorName:e.target.value})}} />*/}
         </div>

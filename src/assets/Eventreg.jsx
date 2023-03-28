@@ -12,7 +12,7 @@ const Eventreg = () => {
     { value: "v2", label: "v2" },
     { value: "v3", label: "v3" },
     { value: "v4", label: "v4" },
-    { value: "v5", label: "v5" }
+    { value: "v5", label: "v5" },
   ];
 
   // Function triggered on selection

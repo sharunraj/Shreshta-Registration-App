@@ -21,7 +21,7 @@ const register = () => {
     setSelectedOptions(data);
   }
   const createUser = async () => {
-    const user_id = await callApi('auth/register', { name, phone })
+    const user_id = await callApi('auth/register', { name, phone, email, phone, role:selectedOptions.value, college })
     ErrorDialogue('User registered Succesfullu !')
     setName('')
     setPhone('')
@@ -44,7 +44,6 @@ const register = () => {
                 value={selectedOptions}
                 onChange={handleSelect}
                 isSearchable={true}
-                isMulti
               />
             </div>
 

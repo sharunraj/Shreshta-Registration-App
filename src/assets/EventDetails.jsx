@@ -189,14 +189,15 @@ function EventDetails() {
     useEffect(() => {
         let body = {}
         if(userDetails.role === 'CORDINATOR'){
-            callApi('event/fetch_event_by_cordinator').then(res=>{
-                if(res.type === 'success' && res.data.event){
-                    body.eventId = res.data.event._id
-                    fetchEvents(body)
-                }
-            }).catch(err=>{
-                alert(err)
-            })
+            // callApi('event/fetch_event_by_cordinator').then(res=>{
+            //     if(res.type === 'success' && res.data.event){
+                    
+            //     }
+            // }).catch(err=>{
+            //     alert(err)
+            // })
+            body.eventId = userDetails?.eventId
+            fetchEvents(body)
         }else{
             fetchEvents()
         }

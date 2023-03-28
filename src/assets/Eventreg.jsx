@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Button } from '../styles/Button'
 import callApi from '../utils/callApi'
@@ -24,6 +24,7 @@ const Eventreg = () => {
   function handleSelect(data) {
     setSelectedOptions(data);
   }
+  
   const initialState = {
     name:'',
     description:'',
@@ -31,16 +32,31 @@ const Eventreg = () => {
     price:'',
     location:'',
     time:'',
-    cordinatorName:'',
-    cordinatorPhone: ''
   }
   const [eventData, setEventData] = useState(initialState)
+  const [cordinators, setCordinators] = useState([])
+
+  useEffect(()=>{
+    callApi('auth/fetch_cordinators').then(res=>{
+      if(res.type==='success'){
+          let cords = res.data.cordinators.map(cord=>{
+              return{
+                  value:cord._id,
+                  label:cord.name
+              }
+          })
+          setCordinators(cords)
+      }
+  })
+  },[])
 
   const submit = ()=>{
     if(!eventData.name || !eventData.location || !eventData.time || !eventData.price){
       ErrorDialogue('Please fill all required fields')
     }
     eventData.time = new Date(eventData.time)
+    const cords = selectedOptions.map(cord=>{return cord.value})
+    eventData.cordinator = cords
     callApi('event/add_event',eventData).then(res=>{
       if(res.type === 'success'){
         ErrorDialogue('Event Added Succesfully')
@@ -79,7 +95,7 @@ const Eventreg = () => {
             <label className="form__label" for="Cordinator">Cordinator </label>
             <div className='dropdown-container'> 
               <Select
-                options={optionList}
+                options={cordinators}
                 placeholder="Coordinator"
                 value={selectedOptions}
                 onChange={handleSelect}
@@ -87,15 +103,7 @@ const Eventreg = () => {
                 isMulti
               />
             </div>
-            <div className="phonenumber">
-              <label className="form__label" for="phonenumber">Phone </label>
-              <input className="form__input" type="phonenumber" id="phonenumber" placeholder="phonenumber" />
-            </div>
           {/*  <input className="form__input" type="text" id="Coord" placeholder="Coordinator" value={eventData.cordinatorName} onChange={e=>{setEventData({...eventData,cordinatorName:e.target.value})}} />*/}
-        </div>
-        <div className="Contact">
-            <label className="form__label" for="Contact">Contact  </label>
-            <input className="form__input" type="text" id="Contact" placeholder="Contact" value={eventData.cordinatorPhone} onChange={e=>{setEventData({...eventData,cordinatorPhone:e.target.value})}} />
         </div>
         <div className="Description">
         <label className='form__label' for="Description">Description</label>

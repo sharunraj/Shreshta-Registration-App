@@ -36,7 +36,7 @@ const register = () => {
             <input className="form__input" type="text" id="NAME" placeholder="Full Name" value={name} onChange={e => { setName(e.target.value) }} />
         </div>
         <div className='Type'>
-          <label className='form__label' for="TYPE">Type</label>
+          <label className='form__label' for="TYPE">Type </label>
             <div className='dropdown-container'>
               <Select
                 options={optionList}

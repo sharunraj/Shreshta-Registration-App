@@ -8,11 +8,16 @@ import Select from 'react-select'
 const Eventreg = () => {
   const [selectedOptions, setSelectedOptions] = useState();
   const optionList = [
-    { value: "v1", label: "v1" },
-    { value: "v2", label: "v2" },
-    { value: "v3", label: "v3" },
-    { value: "v4", label: "v4" },
-    { value: "v5", label: "v5" },
+    { value: "Joel Jose", label: "Joel Jose" },
+    { value: "Jacob Mathew", label: "Jacob Mathew" },
+    { value: "Lakshmi Nair", label: "Lakshmi Nair" },
+    { value: "Sagar S Abraham", label: "Sagar S Abraham" },
+    { value: "Aiswarya Pradeep", label: "Aiswarya Pradeep" },
+    { value: "Maria Biju", label: "Maria Biju" },
+    { value: "Sivaprasad A", label: "Sivaprasad A" },
+    { value: "Swetha Prakash", label: "Swetha Prakash" },
+    { value: "Chandralekha", label: "Chandralekha" },
+    { value: "Joann Jibin", label: "Joann Jibin" },
   ];
 
   // Function triggered on selection

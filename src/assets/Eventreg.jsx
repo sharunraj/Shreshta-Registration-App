@@ -75,8 +75,8 @@ const Eventreg = () => {
             <label className="form__label" for="Price">Price </label>
             <input className="form__input" type="text" id="Desc" placeholder="Price" value={eventData.price} onChange={e=>{setEventData({...eventData,price:e.target.value})}} />
         </div>
-        <div className="Coordinator">
-            <label className="form__label" for="Coordinator">Coordinator </label>
+        <div className="Cordinator">
+            <label className="form__label" for="Cordinator">Cordinator </label>
             <div className='dropdown-container'> 
               <Select
                 options={optionList}

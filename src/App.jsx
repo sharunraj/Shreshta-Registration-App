@@ -24,6 +24,7 @@ import AdminRoute from './utils/AdminRoute';
 import Book from './assets/Book';
 import BookedEvents from './assets/BookedEvents';
 import UserCreated from './assets/UserCreated';
+import UserRoute from './utils/UserRoute';
 const App = () => {
   const theme ={
     colors:{
@@ -54,22 +55,20 @@ const App = () => {
   <Header />
   <Routes>
     <Route path='/login' element={<User />} />
-    <Route path='/' element={<ProtectedRoute> <Home /> </ProtectedRoute>}/>
+    <Route path='/' element={<ProtectedRoute> <UserRoute><Home /> </UserRoute></ProtectedRoute>}/>
     <Route path='/about' element={<ProtectedRoute> <About /> </ProtectedRoute>} />
-    <Route path='/register' element={<ProtectedRoute> <Register /> </ProtectedRoute>} />
+    <Route path='/register' element={<ProtectedRoute> <AdminRoute> <Register /> </AdminRoute> </ProtectedRoute>} />
     <Route path='/contact' element={<ProtectedRoute> <Contact /> </ProtectedRoute>} />
     <Route path='/admin' element={<ProtectedRoute> <AdminRoute> <Admin /> </AdminRoute> </ProtectedRoute>} />
     <Route path='/Events' element={<ProtectedRoute> <Events/> </ProtectedRoute>}/>
     <Route path='/Errorp' element={<ProtectedRoute> <Errorp /> </ProtectedRoute>} />
-    <Route path='/UTransaction' element={<ProtectedRoute> <UTransaction/> </ProtectedRoute>}/>
-    <Route path='/ATransaction' element={<ProtectedRoute> <ATransaction/> </ProtectedRoute>}/>
-    <Route path='/addtoken' element={<ProtectedRoute><Addtoken/></ProtectedRoute>}/>
-    <Route path='/Tables' element={<ProtectedRoute> <Table /></ProtectedRoute>} />
-    <Route path='/Eventreg' element={<ProtectedRoute> <Eventreg /> </ProtectedRoute>} />
-    <Route path='/EventDetails' element={<ProtectedRoute> <EventDetails /> </ProtectedRoute>} />
-    <Route path='/book' element={<ProtectedRoute> <Book /> </ProtectedRoute>} />
-    <Route path='/booked_events' element={<ProtectedRoute> <BookedEvents /> </ProtectedRoute>} />
-    <Route path='/UserCreated' element={<ProtectedRoute> <UserCreated /> </ProtectedRoute>} />
+    <Route path='/UTransaction' element={<ProtectedRoute> <UserRoute><UTransaction/> </UserRoute></ProtectedRoute>}/>
+    <Route path='/ATransaction' element={<ProtectedRoute> <AdminRoute><ATransaction/></AdminRoute> </ProtectedRoute>}/>
+    <Route path='/addtoken' element={<ProtectedRoute><AdminRoute><Addtoken/></AdminRoute></ProtectedRoute>}/>
+    <Route path='/Eventreg' element={<ProtectedRoute> <AdminRoute><Eventreg /></AdminRoute> </ProtectedRoute>} />
+    <Route path='/EventDetails' element={<ProtectedRoute> <AdminRoute><EventDetails /></AdminRoute> </ProtectedRoute>} />
+    <Route path='/book' element={<ProtectedRoute> <UserRoute><Book /></UserRoute> </ProtectedRoute>} />
+    <Route path='/booked_events' element={<ProtectedRoute> <UserRoute><BookedEvents /></UserRoute> </ProtectedRoute>} />
   </Routes>
   <Footer />
   </BrowserRouter>

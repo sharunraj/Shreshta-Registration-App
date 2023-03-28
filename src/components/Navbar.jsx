@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { CgMenu, CgCloseR } from "react-icons/cg";
 import { FaHandHolding } from 'react-icons/fa';
@@ -9,37 +9,28 @@ const Navbar = () => {
 const[openMenu, setOpenMenu] = useState(false);
 const [isUserLoggedIn, setisUserLoggedIn] = useState(true)
 const {userDetails} = useGlobalContext()
+const nav = useNavigate()
 
 const handleLogout = ()=>{
   localStorage.removeItem('user_token')
   setisUserLoggedIn(false)
+  nav('/login')
 }
 
 return (<Nav>
     <div className={openMenu ? "menuIcon active" : "menuIcon"}>
 
         <ul className='navbar-list'>
-        <li>
-                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/">
-                    Home
-                </NavLink>
-        </li>
-        
+
 
                 {localStorage.getItem('user_token')? 
                 <>
-                <li>
-                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/Events">
-                    Events
-                </NavLink>
-                
-                </li>
       {/*  <li>
                 <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/about">
                     About
                 </NavLink>
 </li>*/}
-            {userDetails?.role === 'ADMIN'?
+            {userDetails?.role === 'ADMIN' || userDetails?.role === 'CORDINATOR'?
                 <>
                  <li>
                   <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/admin">
@@ -55,6 +46,18 @@ return (<Nav>
                 </>
                 :  
                 <>
+                <li>
+                        <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/">
+                            Home
+                        </NavLink>
+                </li>
+        
+                <li>
+                <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/Events">
+                    Events
+                </NavLink>
+                
+                </li>
                 <li>
                 <NavLink className="navbar-link" onClick={() => setOpenMenu(false)} to="/UTransaction">
                   Transactions

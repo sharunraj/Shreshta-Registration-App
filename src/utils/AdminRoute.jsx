@@ -4,10 +4,11 @@ import { useGlobalContext } from '../context'
 function AdminRoute({ children }) {
 
   const {userDetails} = useGlobalContext()
+
   
   const isAdmin = ()=>{
     console.log(userDetails,'some');
-    if(userDetails?.role === 'ADMIN'){
+    if(userDetails?.role === 'ADMIN' || userDetails?.role === 'CORDINATOR'){
       return true
     }else{
       return false

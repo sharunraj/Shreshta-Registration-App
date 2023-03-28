@@ -39,9 +39,7 @@ const register = () => {
             <input className="form__input" type="text" id="college" placeholder="college" value={college} onChange={e => { setCollege(e.target.value) }} />
           </div>
       <div class="footer">
-        <NavLink to='/UserCreated'>
-            <Button type="submit" class="btn" onClick={createUser}>Register</Button>
-        </NavLink>
+      <Button type="submit" class="btn" onClick={createUser}>Register</Button>
       </div>
       </div>
     </div>  

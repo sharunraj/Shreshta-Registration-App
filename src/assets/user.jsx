@@ -4,6 +4,7 @@ import { Button } from '../styles/Button'
 import callApi from '../utils/callApi'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
+import { useGlobalContext } from '../context'
 const user = () => {
 
   const [isOTPVerified, setIsOTPVerified] = useState(false)
@@ -11,13 +12,16 @@ const user = () => {
   const [OTP, setOTP] = useState('')
   const nav = useNavigate()
 
+  const {fetchUserDetails} = useGlobalContext()
+
   const handleSubmit = async () => {
     if (isOTPVerified) {
       callApi('auth/verify', { phone, otp: OTP }).then(res => {
         var today = new Date();
         today.setHours(today.getHours() + 10);
         localStorage.setItem('user_token', JSON.stringify({value:res.data.token,expiry:today}));
-        nav('/')
+        // fetchUserDetails()
+        nav('/',{ replace: true })
       }).catch(err => {
         alert(err)
       })

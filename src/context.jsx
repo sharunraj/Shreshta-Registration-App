@@ -50,6 +50,23 @@ const AppProvider = ({children}) => {
             });
         })
     };
+    // const fetchEventDetails = () => {
+    //     return callApi('event/fetch_event_by_cordinator').then(res=>{
+    //         return dispatch({
+    //             type: "EVENT_DETAILS",
+    //             payload: {
+    //                 eventDetails: res.data.event,
+    //             },
+    //         });
+    //     }).catch(err=>{
+    //         return dispatch({
+    //             type: "EVENT_DETAILS",
+    //             payload: {
+    //                 eventDetails: null,
+    //             },
+    //         });
+    //     })
+    // };
     return(
     <AppContext.Provider value={{...state,updateHomePage,updateAboutPage, fetchUserDetails}}>{children}</AppContext.Provider>);
 };

@@ -3,6 +3,7 @@ import { useTable, useFilters, useGlobalFilter, useSortBy, usePagination } from 
 import { matchSorter } from 'match-sorter';
 import styled from 'styled-components';
 import callApi from '../utils/callApi';
+import { useGlobalContext } from '../context';
 // Define a default UI for filtering
 function DefaultColumnFilter({ column: { filterValue, preFilteredRows, setFilter } }) {
     const count = preFilteredRows.length;
@@ -182,43 +183,99 @@ function Table({ columns, data }) {
 function EventDetails() {
 
     const [registrations, setRegistrations] = useState([])
+    const {userDetails} = useGlobalContext()
+    
+    
     useEffect(() => {
-      
-        callApi('event/fetch_event_registrations').then(res=>{
+        let body = {}
+        if(userDetails.role === 'CORDINATOR'){
+            callApi('event/fetch_event_by_cordinator').then(res=>{
+                if(res.type === 'success' && res.data.event){
+                    body.eventId = res.data.event._id
+                    fetchEvents(body)
+                }
+            }).catch(err=>{
+                alert(err)
+            })
+        }else{
+            fetchEvents()
+        }
+        
+    }, [])
+
+    const fetchEvents = (body = {})=>{
+        callApi('event/fetch_event_registrations', body ).then(res=>{
             if(res.type === 'success'){
-                res.data.registrations.map(reg=>{
-                    reg.event = reg.event.name
-                    reg.registrations = reg.userId.length
-                })
-                setRegistrations(res.data.registrations)
+                if(userDetails?.role === 'ADMIN'){
+                    res.data.registrations.map(reg=>{
+                        reg.event = reg.event.name
+                        reg.registrations = reg.userId.length
+                    })
+                    setRegistrations(res.data.registrations)
+                }else{
+                    let obj = res.data.registrations.user.map(user=>{
+                        return {
+                            event : res.data.registrations.event.name,
+                            username : user.name,
+                            phone: user.phone
+                        }
+                    })
+                    setRegistrations(obj)
+                }
+                
             }
         })
-    }, [])
+    }
     
-    const columns = React.useMemo(
-        () => [
-            {
-                Header: ' ',
-                columns: [
-                    {
-                        Header: 'EVENT',
-                        accessor: 'event',
-                        filter: 'fuzzyText',
-                    },
-                    {
-                        Header: 'Registrations',
-                        accessor: 'registrations',
-                        filter: 'fuzzyText',
-                    },
-                ],
-            },
-        ],
-        []
-    );
-    const data = [
-        { events: 'Hackathon', Users: '20' },
-
-    ];
+    let columns;
+    if(userDetails?.role === 'ADMIN'){
+        columns = React.useMemo(
+            () => [
+                {
+                    Header: ' ',
+                    columns: [
+                        {
+                            Header: 'EVENT',
+                            accessor: 'event',
+                            filter: 'fuzzyText',
+                        },
+                        {
+                            Header: 'Registrations',
+                            accessor: 'registrations',
+                            filter: 'fuzzyText',
+                        },
+                    ],
+                },
+            ],
+            []
+        );
+    }else{
+        columns = React.useMemo(
+            () => [
+                {
+                    Header: ' ',
+                    columns: [
+                        {
+                            Header: 'EVENT',
+                            accessor: 'event',
+                            filter: 'fuzzyText',
+                        },
+                        {
+                            Header: 'Name',
+                            accessor: 'username',
+                            filter: 'fuzzyText',
+                        },
+                        {
+                            Header: 'Phone',
+                            accessor: 'phone',
+                            filter: 'fuzzyText',
+                        },
+                    ],
+                },
+            ],
+            []
+        );
+    }
     return <Table columns={columns} data={registrations} />;
 }
 const Wrapper = styled.section`

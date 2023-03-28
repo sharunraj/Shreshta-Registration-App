@@ -5,11 +5,21 @@ import styled from 'styled-components';
 import { Button } from '../styles/Button';
 import ErrorDialogue from '../utils/ErrorDialogue';
 import { NavLink } from 'react-router-dom';
+import Select from 'react-select'
 const register = () => {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
   const [college, setCollege] = useState('')
+
+  const [selectedOptions, setSelectedOptions] = useState();
+  const optionList = [
+    { value: "USER", label: "User" },
+    { value: "CORDINATOR", label: "Cordinator" },
+  ];
+  function handleSelect(data) {
+    setSelectedOptions(data);
+  }
   const createUser = async () => {
     const user_id = await callApi('auth/register', { name, phone })
     ErrorDialogue('User registered Succesfullu !')
@@ -25,8 +35,21 @@ const register = () => {
           <label className="form__label" for="NAME">NAME </label>
             <input className="form__input" type="text" id="NAME" placeholder="Full Name" value={name} onChange={e => { setName(e.target.value) }} />
         </div>
+        <div className='Type'>
+          <label className='form__label' for="TYPE">Type </label>
+            <div className='dropdown-container'>
+              <Select
+                options={optionList}
+                placeholder="type"
+                value={selectedOptions}
+                onChange={handleSelect}
+                isSearchable={true}
+                isMulti
+              />
+            </div>
 
-        <div className="phonenumber">
+        </div>
+       <div className="phonenumber">
           <label className="form__label" for="phonenumber">PHONE </label>
             <input className="form__input" type="phonenumber" id="phonenumber" placeholder="phonenumber" value={phone} onChange={e => { setPhone(e.target.value) }} />
         </div>
@@ -52,6 +75,13 @@ const Wrapper = styled.section`
 .reg-form-body{
   color:#fff;
   font-size:1.5rem;
+}
+.dropdown-container{
+
+  width: 170px;
+  padding-left: 0px;
+    margin-left: -3px;
+  color:#121212;
 }
 .reg-form{
 

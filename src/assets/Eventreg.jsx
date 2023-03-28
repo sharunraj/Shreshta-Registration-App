@@ -8,11 +8,11 @@ import Select from 'react-select'
 const Eventreg = () => {
   const [selectedOptions, setSelectedOptions] = useState();
   const optionList = [
-    { value: "red", label: "Red" },
-    { value: "green", label: "Green" },
-    { value: "yellow", label: "Yellow" },
-    { value: "blue", label: "Blue" },
-    { value: "white", label: "White" }
+    { value: "v1", label: "v1" },
+    { value: "v2", label: "v2" },
+    { value: "v3", label: "v3" },
+    { value: "v4", label: "v4" },
+    { value: "v5", label: "v5" }
   ];
 
   // Function triggered on selection
@@ -75,7 +75,7 @@ const Eventreg = () => {
             <div className='dropdown-container'> 
               <Select
                 options={optionList}
-                placeholder="Select color"
+                placeholder="Coordinator"
                 value={selectedOptions}
                 onChange={handleSelect}
                 isSearchable={true}

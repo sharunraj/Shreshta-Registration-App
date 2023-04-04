@@ -18,6 +18,13 @@ const reducer = (state, action)=>{
         return {
             ...state,
             userDetails: action.payload.userDetails,
+            walletDetails: action.payload.walletDetails
+        };
+    }
+    if (action.type === "EVENT_DETAILS") {
+        return {
+            ...state,
+            eventDetails: action.payload.eventDetails,
         };
     }
     return state;

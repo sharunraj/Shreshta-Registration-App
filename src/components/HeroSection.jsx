@@ -4,64 +4,13 @@ import { Button } from '../styles/Button'
 import { NavLink } from 'react-router-dom'
 import Typewriter from "typewriter-effect";
 import { useGlobalContext } from '../context';
+import Book from '../assets/Book';
 
 const HeroSection = () => {
-  const { name, image } = useGlobalContext();
+  const { name, image, walletDetails } = useGlobalContext();
   return (
-
     <Wrapper>
-      <div className="typ">
-        <Typewriter 
-
-          onInit={(typewriter) => {
-
-            typewriter
-
-              .typeString("SHRESHTA")
-
-              .pauseFor(1000)
-              .deleteAll()
-              .typeString("20203")
-              .pauseFor(100)
-              .deleteAll()
-              .typeString("Welcomes")
-              .pauseFor(600)
-              .deleteAll()
-              .typeString("You All")
-              .pauseFor(50)
-              .deleteAll()
-              .typeString("Scroll Down..")
-              .start();
-
-          }}
-        />
-      </div>
-      <div className="container grid grid-two-column">
-        <div className='section-hero-data'>
-          <h1 className='hero-heading'>
-            {name}
-          </h1>
-          <p className='hero-para'>
-            This is a {name} app for those who will attend SHRESHTA '23 held at Muthoot Institute Of Technology And Science.
-            Through this app the users can deposit their tokens and book events with these respective tokens. It also acts as a database of information
-            for all the events ongoing at the moment.
-          </p>
-          {/* <Button className="btn Admin-btn">
-                <NavLink to="/admincontrol">ADMIN</NavLink>
-            </Button> */}
-          <Button className="btn User-btn">
-            {localStorage.getItem('user_token') ? <NavLink to="/book">Book Now</NavLink> : <NavLink to="/user">Login</NavLink>}
-          </Button>
-        </div>
-        <div className='section-hero-image'>
-          <picture>
-            <img src={image} width={400} alt="heroimg" className='hero-img' />
-          </picture>
-
-        </div>
-      </div>
-
-
+      <Book />
     </Wrapper>);
 };
 
@@ -115,6 +64,20 @@ const Wrapper = styled.section`
   }
   .hero-img {
     max-width: 80%;
+  }
+  .balance{
+    background: linear-gradient(90deg, rgba(71,160,121,1) 0%, rgba(2,97,96,1) 100%);
+    border-radius: 24px;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    max-width: 16em;
+  }
+  .balance p{
+    margin: 0;
+    background: #292929;
+    border-radius: 24px;
+    opacity: 1;
   }
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     .grid {

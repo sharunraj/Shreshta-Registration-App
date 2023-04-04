@@ -4,6 +4,7 @@ import { Button } from '../styles/Button'
 import callApi from '../utils/callApi'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
+import { useGlobalContext } from '../context'
 const user = () => {
 
   const [isOTPVerified, setIsOTPVerified] = useState(false)
@@ -11,13 +12,16 @@ const user = () => {
   const [OTP, setOTP] = useState('')
   const nav = useNavigate()
 
+  const {fetchUserDetails} = useGlobalContext()
+
   const handleSubmit = async () => {
     if (isOTPVerified) {
       callApi('auth/verify', { phone, otp: OTP }).then(res => {
         var today = new Date();
         today.setHours(today.getHours() + 10);
         localStorage.setItem('user_token', JSON.stringify({value:res.data.token,expiry:today}));
-        nav('/')
+        // fetchUserDetails()
+        nav('/',{ replace: true })
       }).catch(err => {
         alert(err)
       })
@@ -72,7 +76,7 @@ const Wrapper = styled.section`
     border: 3px solid grey;
    // background-color:#292929;
     border-radius:2rem;
-    padding: 1rem
+    padding: 1 3rem
 }
 .form__label{
   margin-right:5rem;
@@ -81,10 +85,19 @@ const Wrapper = styled.section`
 .regform {
     
     
-    max-width: 35rem;
-    margin: 2rem auto;
-    padding: 2rem;
-    /* height: 600px; */
+    width: 25rem;
+    margin: 2rem auto;   
+    border: 3px solid grey;
+   // background-color:#292929;
+    border-radius:2rem;
+    padding: 1 4rem;
+
+}
+.login-form-body{
+  font-size: 1.7rem;
+  color:#fff;
+  text-align:left;
+  margin:auto;
 }
 .footer{
     padding-top: 1.4rem;

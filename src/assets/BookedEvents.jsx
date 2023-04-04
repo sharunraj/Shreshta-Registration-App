@@ -31,7 +31,7 @@ const BookedEvents = () => {
     
     return (
         <Wrapper className="section">
-            <h2 className="common-heading">EVENTS</h2>
+            <h2 className="common-heading">Booked Events</h2>
             <div className="container grid grid-three-column">
                 {events.map((value, i) => (
                     <div className="card">
@@ -53,9 +53,10 @@ const BookedEvents = () => {
                             <figure>
                                 <img className="w-4 h-4" src={value.eventId.poster} alt="" />
                             </figure>
-                            <h4>
+                            {/* <h4>
+                              Exp:
                                 {new Date(new Date(value.createdAt).setMinutes(new Date(value.createdAt).getMinutes()+30)).toLocaleString()}
-                            </h4>
+                            </h4> */}
                             <h3 >
                                 {value.eventId.location}
                             </h3>
@@ -74,9 +75,6 @@ const Wrapper = styled.section`
     max-width: 120rem;
   }
   .common-heading{
-    text-decoration-line:underline;
-      text-decoration-line:underline;
-  text-decoration-thickness:2px;
   padding-bottom:2rem;
   margin-top:-5rem;
   }
@@ -100,7 +98,7 @@ const Wrapper = styled.section`
     .btn {
       margin: 2rem auto;
       background-color: rgb(0 0 0 / 0%);
-      border: 0.3rem solid #05aeaa;
+      border: 0.3rem solid #fff;
       display: flex;
       justify-content: center;
       align-items: center;

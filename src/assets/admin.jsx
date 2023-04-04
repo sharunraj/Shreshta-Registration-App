@@ -5,12 +5,16 @@ import { Button } from '../styles/Button'
 //import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NavLink } from 'react-router-dom'
 import './adminstyle.css'
+import { useGlobalContext } from '../context'
 const admin = () => {
+  const {userDetails} = useGlobalContext()
   return (
     <Wrapper>
     <h2 className='heading'>ADMIN PANEL</h2>
     <div className='whole bdy'>
     <div className='cntr'>
+    {userDetails?.role === 'ADMIN' && 
+    <>
     <div className='card'>
           <div className='box'>
             <div className='content'>
@@ -47,6 +51,8 @@ const admin = () => {
     </div>
           </div>
         </div>
+    </>
+    }
     <div className='card'>
           <div className='box'>
             <div className='content'>
@@ -64,8 +70,7 @@ const admin = () => {
 };
 const Wrapper = styled.section`
 .heading{
-  text-decoration-line:underline;
-  text-decoration-thickness:2px;
+  
       display: flex;
         justify-content: center;
         align-items: center;
